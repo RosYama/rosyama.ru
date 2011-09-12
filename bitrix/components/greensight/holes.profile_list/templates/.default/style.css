@@ -1,0 +1,204 @@
+div.date { margin-bottom: 12px; font-style: italic; }
+
+.holes_list {
+	list-style-type: none;
+}
+
+	.holes_list li {
+		background: #fff /*url(images/prop_bg.gif)*/ repeat-x bottom;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+		-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+		-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+		/*float: left;*/
+		display: inline-block; 
+		margin: 0 29px 30px 0;
+		overflow: hidden;
+		width: 214px;
+	}
+	
+	.holes_list .noMargin {
+		margin-right: 0;
+	}
+	
+		.holes_list .photo {
+			display: block;
+			height: 160px;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		.holes_list .properties {
+			color: #888;
+			padding: 8px 8px 5px;
+		}
+
+			.holes_list .service {
+				font-size: 1.09em;
+				line-height: 1.5em;
+				min-height: 10px;
+				color: #333;
+				height: 25px;
+				overflow: hidden;
+				white-space: nowrap;
+				position: relative;
+			}
+
+				.holes_list .service i {
+					background: url(images/fog.png) repeat-y;
+					display: block;
+					height: 100%;
+					position: absolute;
+					right: -1px;
+					top: 0;
+					width: 18px;
+				}
+				.holes_list .service p {
+					margin: 0;
+					padding: 0 0 0.25em;
+				}
+
+				.holes_list .service span {
+					border-right: 1px solid #ededed;
+					float: left;
+					height: 20px;
+					line-height: 18px;
+					margin-right: 4px;
+					padding-right: 4px;
+				}
+
+				.holes_list .service em, .holes_list .service .date {
+					font-size: 0.77em;
+					line-height: 2.2em;
+				}
+
+				.holes_list .service .date {
+					border: 0;
+					margin: 0;
+					padding: 0;
+				}
+
+				.holes_list .mapMark {
+					line-height: 1.4em;
+				}
+
+					.holes_list .mapMark img {
+						vertical-align: middle;
+					}
+
+			.holes_list .social {
+				float: none;
+				padding: 6px;
+				color: #a0a0a0;
+			}
+				.holes_list .social .status_span { font-weight: bold; font-size: 20px; }
+				.holes_list .social .state_fresh { color: green; }
+				.holes_list .social .state_inprogress { color: orange; }
+				.holes_list .social .state_achtung { color: maroon; }
+				.holes_list .social .state_fixed { color: inherit; }
+				
+				.holes_list .social .rate {
+					color: #3b3b3b;
+					float: left;
+					font: italic bold 1.5em/1 "Trebuchet MS", sans-serif;
+				}
+				
+					.holes_list .rate img {
+						display: inline;
+						margin-left: 4px;
+					}
+					
+				
+				.holes_list .social .comments {
+					border-left: 1px solid #fefefe;
+					float: right;
+					padding-left: 7px;
+				}
+				.holes_list .social img { float: right; }
+				
+					.holes_list .social .comments p {
+						background: #b7b7b7;
+						border: 1px solid #b7b7b7;
+						-webkit-border-radius: 3px;
+						-moz-border-radius: 3px;
+						border-radius: 3px;
+						color: #fff;
+						font: italic 0.83em/1 Verdana, sans-serif;
+						height: 12px;
+						line-height: 12px;
+						margin: 0;
+						padding: 0 5px 1px;
+						position: relative;
+					}
+	
+						.holes_list .social .comments i {
+							display: block;
+							height: 4px;
+							left: 42%;
+							overflow: hidden;
+							position: absolute;
+							top: 14px;
+							width: 4px;
+						}
+	
+						.holes_list .social .comments i i {
+							background: #b7b7b7;
+							border-color: #b7b7b7 #edeeee;
+							border-style: solid;
+							border-width: 4px 4px 0 4px;
+							display: block;
+							height: 1px;
+							overflow: hidden;
+							position: static;
+							width: 1px;
+						}
+				
+				.holes_list .share {
+					border-right: 1px solid #e8e8e8;
+					float: right;
+					margin: 0;
+					overflow: hidden;
+				}
+				
+					.holes_list .share a {
+						background: url(images/share.gif);
+						float: left;
+						height: 16px;
+						margin: 0 7px 0 0;
+						text-indent: -10000px;
+						width: 14px;
+					}
+					
+					.holes_list .share .fb {background-position:-14px 0}
+					.holes_list .share .tw {background-position:0 0}
+					.holes_list .share .vk {background-position:-28px 0}
+
+	.holes_list .t, .holes_list .b {
+		background: url(images/shadow_tb.gif);
+		display: block;
+		margin: 0 -5px 0 -3px;
+		overflow: hidden;
+		width: 208px;
+	}
+	
+	.holes_list .t {
+		background-position: 0 0;
+		height: 3px;
+	}
+	
+	.holes_list .b {
+		background-position: 0 -3px;
+		height: 5px;
+	}
+	
+	.holes_list a, .holes_list a:hover {
+		text-decoration: none;
+	}
+
+.holes_list:after, .holes_list li:after, .holes_list .service p:after, .holes_list .social:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+}

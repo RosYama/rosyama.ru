@@ -1,0 +1,100 @@
+.menu {
+	font-size: 1.5em;
+	list-style-type: none;
+	margin: 0 23px 0 0;
+	padding-right: 23px;
+}
+
+	.menu li {
+		float: left;
+		height: 39px;
+		margin: 0 -23px 0 0;
+		position: relative;
+		z-index: 2;
+	}
+	
+	.menu li.selected {z-index:3}
+	.menu li.add {z-index:1}
+	
+		.menu a, .menu a:hover {
+			color: #fff;
+			float: left;
+			height: 39px;
+			line-height: 38px;
+			outline: none;
+			padding: 0 35px;
+			text-decoration: none;
+		}
+		
+		.menu .selected a, .menu .selected a:hover {
+			background: #3a3a3a;
+			color: #666;
+		}
+		
+		.menu .first a {
+			padding-left: 12px;
+		}
+		
+		.menu .add a {
+			background: #ef7600 url(images/add_bg.gif) repeat-x bottom;
+		}
+		
+		.menu b {
+			background: url(images/separator.gif) 0 -39px;
+			cursor: pointer;
+			display: block;
+			height: 39px;
+			left: 0;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			width: 22px;
+		}
+		
+		.menu .first b {
+			background: #3a3a3a;
+			border-color: #3a3a3a #454545 #454545 #454545;
+			border-style: solid;
+			border-width: 37px 0 0 15px;
+			bottom: 0;
+			cursor: default;
+			display: none;
+			height: 1px;
+			left: -16px;
+			overflow: hidden;
+			position: absolute;
+			width: 1px;
+		}
+		
+		.menu .selected b {
+			display: block !important;
+		}
+		
+		.menu i {
+			background: url(images/separator.gif);
+			cursor: pointer;
+			display: block;
+			height: 39px;
+			overflow: hidden;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 22px;
+		}
+
+		.menu .last i {
+			background: url(images/separator.gif) 0 -78px;
+		}
+		
+		.menu .add i {
+			background: url(images/separator.gif) 0 -117px;
+		}
+
+.menu li:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+}

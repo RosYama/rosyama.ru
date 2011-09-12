@@ -1,0 +1,89 @@
+<?
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+IncludeTemplateLangFile(__FILE__);
+?>
+	<?if($APPLICATION->GetCurPage()=="/" || $APPLICATION->GetCurPage() == '/personal/add.php' || defined("ERROR_404") || substr($APPLICATION->GetCurPage(), 0, 10) == '/personal/'):?>
+	</div>
+	<?else:?>
+		</div>
+	</div>
+	<?endif;?>
+</div>
+<div class="footer">
+	<div class="container">
+		<p class="autochmo"><a target="_blank" href="http://autochmo.ru/" title="Доска позора водителей &aring;вточмо">&aring;utochmo</a><br>Доска позора водителей</p>
+		<p class="copy">&copy; <a href="http://navalny.ru/">Алексей Навальный</a>, 2011<br />
+		<a href="mailto:rossyama@gmail.com">rossyama@gmail.com</a><br />
+		Сделано в <a href="http://greensight.ru" target="_blank">Greensight</a><br />
+		<? $APPLICATION->IncludeComponent('greensight:holes.counter', 'footer'); ?>
+	</div>
+</div>
+<script type="text/javascript">
+reformal_wdg_domain    = "rosyama";
+reformal_wdg_mode    = 0;
+reformal_wdg_title   = "rosyama";
+reformal_wdg_ltitle  = "Оставьте отзыв";
+reformal_wdg_lfont   = "";
+reformal_wdg_lsize   = "";
+reformal_wdg_color   = "#FFA000";
+reformal_wdg_bcolor  = "#516683";
+reformal_wdg_tcolor  = "#FFFFFF";
+reformal_wdg_align   = "left";
+reformal_wdg_charset = "utf-8";
+reformal_wdg_waction = 0;
+reformal_wdg_vcolor  = "#9FCE54";
+reformal_wdg_cmline  = "#E0E0E0";
+reformal_wdg_glcolor  = "#105895";
+reformal_wdg_tbcolor  = "#FFFFFF";
+
+reformal_wdg_bimage = "fb17bdca7e3a07420c91c07d5ef7e4f4.png";
+
+</script>
+
+<script type="text/javascript" language="JavaScript" src="http://reformal.ru/tab6.js?charset=utf-8"></script><noscript><a href="http://rosyama.reformal.ru">rosyama feedback </a> <a href="http://reformal.ru"><img src="http://reformal.ru/i/logo.gif" /></a></noscript>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21943923-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<?global $fresh?>
+<? if ($_GET["login"]=="yes"&&$fresh>0):?>
+	<div id="addDiv">
+		<div id="fon">
+		</div>
+		<div id="popupdiv">
+		
+			<h1>Добрый день, <?= strlen($USER->GetFirstName()) ? $USER->GetFirstName() : $USER->GetLogin() ?></h1>
+			<p>Вы добавили на сайт <?= $fresh;?> ям, по которым не было подано заявление в ГИБДД. Обращаем внимание, что публикация здесь не влечет за собой автоматического исправления дефекта на дороге.</p>
+			 <span class="filterBtn close">
+				<i class="text">Продолжить</i>
+			 </span>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){				
+						$('.close').click(function(){
+								$('#popupdiv').fadeOut(400);
+								$('#fon').fadeOut(600);
+								$('#addDiv').fadeOut(800);
+								
+								
+										
+							})
+							
+	})
+
+	</script>
+<?endif?>
+
+</body>
+</html>

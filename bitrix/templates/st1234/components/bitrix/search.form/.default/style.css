@@ -1,0 +1,17 @@
+.search .textInput {
+	background: none;
+	border: 0;
+	color: #bcbcbc;
+	font: normal 1.1em "Trebuchet MS", sans-serif;
+	vertical-align: middle;
+}
+
+.search .inactive {
+	color: #787878;
+	font-style: italic !important;
+}
+
+.search .btn {
+	margin-right: 6px;
+	vertical-align: middle;
+}

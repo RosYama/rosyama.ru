@@ -1,0 +1,16 @@
+.faq-item
+{
+	margin-bottom:26px;
+}
+.faq-item th,td
+{
+	padding:2px 9px 2px 5px;
+}
+
+.faq-item .question, .faq-item th
+{
+	
+	font-weight:bold;
+	font-size:120%;
+	line-height:115%;
+}

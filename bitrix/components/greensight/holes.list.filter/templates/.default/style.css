@@ -1,0 +1,68 @@
+div.filter_roller { width: 185px; border: 1px solid silver; padding: 5px; height: 200px; overflow-y: scroll; position: absolute; z-index: 3; background-color: white; margin-top: -25px; display: none; }
+div.filter_roller span.item { display: block; margin-bottom: 2px; cursor: pointer; }
+div.filter_roller span.item:hover { background-color: #e0e0e0; }
+div.filter_roller span.item span { font-weight: bold; }
+
+.filter {
+	background: #fff;
+	margin-bottom: 30px;
+	padding: 30px 25px 15px 20px;
+}
+
+	.filter p {
+		margin-bottom: 1.75em;
+	}
+
+	.filter select {
+		background: #ececec;
+		border-color: #d9d9d9 #ececec #ececec #d9d9d9;
+		border-style: solid;
+		border-width: 1px;
+		color: #4c4c4c;
+		font: normal 1em "Trebuchet MS", Arial, sans-serif;
+		width: 100%;
+	}
+
+	.filter input {
+		background: #ececec;
+		border-color: #d9d9d9 #ececec #ececec #d9d9d9;
+		border-style: solid;
+		border-width: 1px;
+		color: #6B6B6B;
+		font: normal 1em "Trebuchet MS", Arial, sans-serif;
+		width: 100%;
+	}
+	
+	.filter .filter_checkbox{
+		width: 8%;
+	}
+
+	.filter .disabled {
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+	}
+
+	.filter .active {
+		color: black;
+	}
+
+.lCol .like {
+	border-top: 1px solid #d1d1d1;
+}
+
+.lCol .like #fb_like {
+	border-top: 1px solid #fff;
+	padding-top: 30px;
+}
+
+.reset {
+	border-bottom: 1px dotted #4293c5;
+	color: #4293c5;
+	cursor: pointer;
+	font-style: italic;
+}
+
+.reset:hover {
+	border-color: #edb209;
+	color: #edb209;
+}

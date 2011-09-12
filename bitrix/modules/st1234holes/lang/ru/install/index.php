@@ -1,0 +1,6 @@
+<?php
+
+$MESS['GREENSIGHT_ST1234_INSTALL_NAME']        = 'Модуль ям';
+$MESS['GREENSIGHT_ST1234_INSTALL_DESCRIPTION'] = 'Статья 12.34';
+
+?>
