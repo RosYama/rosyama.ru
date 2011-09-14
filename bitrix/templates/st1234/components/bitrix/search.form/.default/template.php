@@ -27,15 +27,15 @@
 					searchWidth+=1;
 					}
 			<?else:?>
-				var searchWidth=420;
+				var searchWidth=430;
 				var	searchInputWidth=searchWidth-30;
 				
 			<?endif?>
 			<?
 				global $USER;
 				if (!$USER->IsAuthorized()):?>
-				searchInputWidth-=40;
-				searchWidth-=40;
+				searchInputWidth-=47;
+				searchWidth-=47;
 			<?endif?>
 				if ($.browser.msie && $.browser.version == 9) {
 					searchInputWidth+=5;

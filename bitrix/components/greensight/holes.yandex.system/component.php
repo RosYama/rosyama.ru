@@ -78,27 +78,36 @@ $arParams['MAP_ID'] =
 	(strlen($arParams["MAP_ID"])<=0 || !preg_match("/^[A-Za-z_][A-Za-z01-9_]*$/", $arParams["MAP_ID"])) ? 
 	'MAP_'.RandString() : $arParams['MAP_ID']; 
 
-if($_SERVER['HTTP_X_FORWARDED_FOR'])
+if(isset($_COOKIE['map_settings']))
 {
-	$forwarded_for = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-	$forwarded_for = $forwarded_for[0];
+	$res = json_decode(str_replace("'", '"', $_COOKIE['map_settings']), true);
+	$coords = explode(',', $res['center']);
+	$arParams['INIT_MAP_LON'] = (float) $coords[0];
+	$arParams['INIT_MAP_LAT'] = (float) $coords[1];
+	$arParams['INIT_MAP_SCALE'] = (int) $res['zoom'];
+}
+else
+{
+	if($_SERVER['HTTP_X_FORWARDED_FOR'])
+	{
+		$forwarded_for = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+		$forwarded_for = $forwarded_for[0];
+	}
+	
+	list($arParams['INIT_MAP_LAT'], $arParams['INIT_MAP_LON']) = array_values(CGreensightGeoip::GetCoordinatesByIP($forwarded_for ? $forwarded_for : $_SERVER['REMOTE_ADDR']));
+	
+	/// Массив данных масштаба и положения карты
+	if(!$arParams['INIT_MAP_LAT'] || !$arParams['INIT_MAP_LON'])
+	{
+		$arParams['INIT_MAP_LON'] = floatval($arParams['INIT_MAP_LON']);
+		$arParams['INIT_MAP_LON'] = $arParams['INIT_MAP_LON'] ? $arParams['INIT_MAP_LON'] : 37.64;
+		$arParams['INIT_MAP_LAT'] = floatval($arParams['INIT_MAP_LAT']);
+		$arParams['INIT_MAP_LAT'] = $arParams['INIT_MAP_LAT'] ? $arParams['INIT_MAP_LAT'] : 55.76;
+	}
+	$arParams['INIT_MAP_SCALE'] = intval($arParams['INIT_MAP_SCALE']);
+	$arParams['INIT_MAP_SCALE'] = $arParams['INIT_MAP_SCALE'] ? $arParams['INIT_MAP_SCALE'] : 10;
 }
 
-list($arParams['INIT_MAP_LAT'], $arParams['INIT_MAP_LON']) = array_values(CGreensightGeoip::GetCoordinatesByIP($forwarded_for ? $forwarded_for : $_SERVER['REMOTE_ADDR']));
-
-
-/// Массив данных масштаба и положения карты
-if(!$arParams['INIT_MAP_LAT'] || !$arParams['INIT_MAP_LON'])
-{
-	$arParams['INIT_MAP_LON'] = floatval($arParams['INIT_MAP_LON']);
-	$arParams['INIT_MAP_LON'] = $arParams['INIT_MAP_LON'] ? $arParams['INIT_MAP_LON'] : 37.64;
-	$arParams['INIT_MAP_LAT'] = floatval($arParams['INIT_MAP_LAT']);
-	$arParams['INIT_MAP_LAT'] = $arParams['INIT_MAP_LAT'] ? $arParams['INIT_MAP_LAT'] : 55.76;
-}
-$arParams['INIT_MAP_SCALE'] = intval($arParams['INIT_MAP_SCALE']);
-$arParams['INIT_MAP_SCALE'] = $arParams['INIT_MAP_SCALE'] ? $arParams['INIT_MAP_SCALE'] : 10;
-
-//echo '<pre>'; print_r($arParams); echo '</pre>';
 
 $arResult['ALL_MAP_TYPES'] = array('MAP', 'SATELLITE', 'HYBRID');
 $arResult['ALL_MAP_OPTIONS'] = array('ENABLE_SCROLL_ZOOM' => 'ScrollZoom', 'ENABLE_DBLCLICK_ZOOM' => 'DblClickZoom', 'ENABLE_DRAGGING' => 'Dragging', 'ENABLE_HOTKEYS' => 'HotKeys', 'ENABLE_RULER' => 'Ruler');
@@ -148,6 +157,6 @@ if (substr($arParams['MAP_HEIGHT'], -1, 1) != '%')
 	if ($arParams['MAP_HEIGHT'] <= 0) $arParams['MAP_HEIGHT'] = 500;
 	$arParams['MAP_HEIGHT'] .= 'px';
 }
-	
+
 $this->IncludeComponentTemplate();
 ?>

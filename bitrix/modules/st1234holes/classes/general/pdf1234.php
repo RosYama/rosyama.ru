@@ -132,26 +132,6 @@ class pdf1234{
 	protected function footer()
 	{
 		if($this->note!=0){
-		$str = function($p){
-				$end1=substr($p, strlen($p)-2, 2);
-				$end2=substr($p, strlen($p)-1, 1);
-				if((10 <= $end1 && $end1 <= 20) || (5 <= $end2 && $end2 <= 9))
-				{
-					$text='й';
-				}
-				elseif (2 <= $end2 && $end2 <= 4)
-				{
-					$text= 'и';
-				}
-				elseif ($end2==1)
-				{
-					$text = 'я';
-				}
-				else{
-					$text = 'й';
-				}
-				return $text;
-			};
 			if($this->temp == 'prosecutor' || $this->temp == 'prosecutor2')
 			{
 				if($this->params['date3.year'] > 1970)
@@ -161,7 +141,7 @@ class pdf1234{
 			}
 			else
 			{
-				$x[0] = 'Приложение: '.$this->note.' фотографи'.$str($this->note);
+				$x[0] = 'Приложение: '.$this->note.' фотографи'.pdf1234::getEnd($this->note);
 			}
 		}
 		return $x;
@@ -409,6 +389,28 @@ class pdf1234{
 		$this->pdf->SetX(20);
 		$this->pdf->Write(5,$x);
 		$this->pdf->Ln();
+	}
+	
+	public function getEnd($p)
+	{
+		$end1=substr($p, strlen($p)-2, 2);
+		$end2=substr($p, strlen($p)-1, 1);
+		if((10 <= $end1 && $end1 <= 20) || (5 <= $end2 && $end2 <= 9))
+		{
+			$text='й';
+		}
+		elseif (2 <= $end2 && $end2 <= 4)
+		{
+			$text= 'и';
+		}
+		elseif ($end2==1)
+		{
+			$text = 'я';
+		}
+		else{
+			$text = 'й';
+		}
+		return $text;
 	}
 
 }

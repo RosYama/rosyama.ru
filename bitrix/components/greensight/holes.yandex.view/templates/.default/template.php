@@ -99,9 +99,17 @@ function BX_SetPlacemarks_<?echo $arParams['MAP_ID']?>(map)
 	jsYandexSearch_<?= $arParams['MAP_ID'] ?>.searchByAddress("<?= htmlspecialcharsEx($_GET['q']) ?>");
 <? endif; ?>
 
-	YMaps.Events.observe(map, map.Events.MoveEnd, function() { GetPlacemarks(map); } );
-	YMaps.Events.observe(map, map.Events.Move, function() { GetPlacemarks(map); } );
-	YMaps.Events.observe(map, map.Events.Update, function() { GetPlacemarks(map); } );
+	YMaps.Events.observe(map, map.Events.MoveEnd, function() {
+		var res = "{ 'center': '" + map.getCenter() + "', 'zoom': '" + map.getZoom() + "' }"
+		document.cookie = "map_settings="+res
+		GetPlacemarks(map);
+	} );
+	YMaps.Events.observe(map, map.Events.Move, function() { GetPlacemarks(map);	} );
+	YMaps.Events.observe(map, map.Events.Update, function() {
+		var res = "{ 'center': '" + map.getCenter() + "', 'zoom': '" + map.getZoom() + "' }"
+		document.cookie = "map_settings="+res
+		GetPlacemarks(map);
+	} );
 	GetPlacemarks(map);
 }
 </script>

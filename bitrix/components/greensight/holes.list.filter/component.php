@@ -5,9 +5,8 @@ if(!CModule::IncludeModule('greensight_utils') || !CModule::IncludeModule('st123
 {
 	die('');
 }
-
 $arResult = array();
-$arResult['FORM_ACTION'] = '/';
+$arResult['FORM_ACTION'] = SITE_TEMPLATE_ID == 'print' ? '?print=Y' : '/';
 $arResult['TYPE'] = array();
 foreach(C1234HoleApi::$_allowed_types as $type)
 {

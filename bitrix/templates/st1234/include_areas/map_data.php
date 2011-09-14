@@ -48,8 +48,8 @@ for(var i=0;i<6;i++){
 <label class="col4"><span><input id="ch4" name="TYPE[6]" type="checkbox"  value="policeman" <?if($_REQUEST["TYPE"][6]):?>checked="checked"<?endif?> /></span><ins class="policeman">Полицейский</ins></label>
 <label class="col1"><span><input id="ch5" name="TYPE[7]" type="checkbox"  value="holeinyard" <?if($_REQUEST["TYPE"][7]):?>checked="checked"<?endif?> /></span><ins class="holeinyard">Яма во дворе</ins></label>
 <!--<label class="col2"><span><input id="ch9" name="TYPE[8]" type="checkbox"  value="fence" <?if($_REQUEST["TYPE"][8]):?>checked="checked"<?endif?> /></span><ins class="fence">Ограждение</ins></label>-->
-<input id="MAPLAT" name="MAPLAT" type="hidden" value="<?=$_REQUEST["MAPLAT"]?>" />
-<input id="MAPZOOM" name="MAPZOOM" type="hidden" value="<?=$_REQUEST["MAPZOOM"]?>" />
+<input id="MAPLAT" name="MAPLAT" type="hidden" value="<?= htmlspecialcharsEx($_REQUEST["MAPLAT"]) ?>" />
+<input id="MAPZOOM" name="MAPZOOM" type="hidden" value="<?= htmlspecialcharsEx($_REQUEST["MAPZOOM"]) ?>" />
 
 
 

@@ -10,6 +10,7 @@ if(!CModule::IncludeModule('greensight_utils'))
 {
 	die();
 }
+require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/fileman/properties.php');
 
 if(isset($_REQUEST['ajax']))
 {
@@ -147,6 +148,8 @@ if($USER->IsAdmin())
 	}
 	$arResult['magic_url'] = $magic_url;
 }
+
+$arResult['YANDEX_MAP_KEY'] = CIBlockPropertyMapYandex::_GetMapKey('yandex', $_SERVER['SERVER_NAME']);
 
 $this->IncludeComponentTemplate();
 

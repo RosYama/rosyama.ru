@@ -486,7 +486,7 @@ class C1234Hole
 		$res = $DB->Query($count_str);
 		$ar  = $res->Fetch();
 		$pages_count = ceil($ar['C'] / $navparams['limit']);
-		
+
 		// картинки
 		if(!$navparams['nopicts'])
 		{
@@ -517,6 +517,7 @@ class C1234Hole
 						}
 					}
 				}
+
 				closedir($f);
 				sort($v['pictures']['small']['fresh']);
 				sort($v['pictures']['medium']['fresh']);
