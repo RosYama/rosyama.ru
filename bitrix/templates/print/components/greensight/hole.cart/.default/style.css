@@ -1,0 +1,18 @@
+.ymapcontainer
+{
+	width: 700px;
+	height: 500px;
+}
+
+.holes_list
+{
+	border: double 1px #ECECEC;
+	margin-bottom: 3%;
+}
+
+
+.service
+{
+	word-wrap: break-word;
+	width: 90%;
+}

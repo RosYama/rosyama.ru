@@ -15,7 +15,7 @@ class CGreensightUtils
 	 */
 	public static function timestamp2human($timestamp)
 	{
-		return date('d', $timestamp).' '.GetMessage('GREENSIGH_RUMONTH_'.date('n', $timestamp)).' '.date('Y', $timestamp);
+		return preg_replace('/^0/', '', date('d', $timestamp)).' '.GetMessage('GREENSIGH_RUMONTH_'.date('n', $timestamp)).' '.date('Y', $timestamp);
 	}
 	
 	/**

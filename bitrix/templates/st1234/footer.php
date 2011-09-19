@@ -15,12 +15,19 @@ IncludeTemplateLangFile(__FILE__);
 		<p class="copy">&copy; <a href="http://navalny.ru/">Алексей Навальный</a>, 2011<br />
 		<a href="mailto:rossyama@gmail.com">rossyama@gmail.com</a><br />
 		Сделано в <a href="http://greensight.ru" target="_blank">Greensight</a><br /><br />
-		<a href="/?print=Y<?=!empty($_POST['filter_status']) ? htmlspecialchars('&filter_status='.$_POST['filter_status']) : ''?>
-			<?=!empty($_POST['filter_rf_subject']) ? htmlspecialchars('&filter_rf_subject='.$_POST['filter_rf_subject']) : ''?>
-			<?=!empty($_POST['filter_type']) ? htmlspecialchars('&filter_type='.$_POST['filter_type']) : ''?>
-			<?=!empty($_POST['filter_city']) ? htmlspecialchars('&filter_city='.$_POST['filter_city']) : ''?>" >
+		<? if(preg_match('/^\/+[0-9]+\//', $APPLICATION->GetCurPage()) || $APPLICATION->GetCurPage() == '/'){?>
+		<a <? if(isset($_GET['ID'])){?>
+				href="/<?=(int) $_GET['ID']?>/?print=Y"
+			<?}else{?>
+				href="/?print=Y<?=!empty($_POST['filter_status']) ? htmlspecialchars('&filter_status='.$_POST['filter_status']) : ''?>
+				<?=!empty($_POST['filter_rf_subject']) ? htmlspecialchars('&filter_rf_subject='.$_POST['filter_rf_subject']) : ''?>
+				<?=!empty($_POST['filter_type']) ? htmlspecialchars('&filter_type='.$_POST['filter_type']) : ''?>
+				<?=!empty($_POST['filter_city']) ? htmlspecialchars('&filter_city='.$_POST['filter_city']) : ''?>"
+			<?}?>
+			>
 			Версия для печати
 		</a>
+		<?}?>
 		<? $APPLICATION->IncludeComponent('greensight:holes.counter', 'footer'); ?>
 	</div>
 </div>

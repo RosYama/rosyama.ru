@@ -1,36 +1,8 @@
 <?php
-/*
-PDF генерится функцией: public function getpdf($temp, $params, $image)
-$temp - название шаблона
-$params - передаваемые параметры
-$image - массив картинок(если есть)
+/**
+ *Генерация PDF
+ */
 
-Параметры передаваемые в массиве:
-
-Начальнику: $params['chief']     //наименование структурного подразделения ГИБДД
-От: $params['fio']   //Фамилия Имя Отчество заявителя
-адрес: $params['address']   //индекс и почтовый адрес заявителя для переписки
-
-даты идут по порядку, как в шаблоне:
-								день					месяц				год(полностью, не 2 последнии цифры)
-та что после "ЗАЯВЛЕНИЕ":  $params['date1.day']  $params['date1.month']  $params['date1.year']
-после даты: $params['street']  //укажите улицу и номер ближайшего дома или перекресток улиц, километр шоссе и т.п.
-
-Приложение: $params['note']  //если отправляете фотографии или схему (необязательно), то опишите и укажите количество листов
-
-Нижняя дата:
-$params['date2.day']  $params['date2.month'] $params['date2.year']  
-
-Подпись:  $params['signature']
-
-В шаблоне "ограждение(fence)" есть еще 1 дата:
-$params['date3.day'] $params['date3.month'] $params['date3.year']
-... и количество дней: $params['days']
-
-В шаблоне "светофор(light)" есть поле Причина:
-$params['reason']   //укажите причину изменения работы и предложите вариант изменения
-
-*/
 class pdf1234{
 	public $pdf;
 	public $params;
@@ -42,6 +14,19 @@ class pdf1234{
 		$this->pdf = new tFPDF();
 	}
 	
+	/**
+	 *Основная функция. Выводит сгенерированный PDF
+	 *@param string $temp тип дефекта
+	 *@param array $params массив параметров:
+	 *  $params['chief']      наименование структурного подразделения ГИБДД
+	 *  $params['fio']        Фамилия Имя Отчество заявителя
+	 *  $params['address']    индекс и почтовый адрес заявителя для переписки
+	 *  $params['date1.day'] $params['date1.month']  $params['date1.year']  самая первая дата (стоящая после слова "ЗАЯВЛЕНИЕ") в формате dd.mm.yyyy
+	 *  $params['street']     укажите улицу и номер ближайшего дома или перекресток улиц, километр шоссе и т.п.
+	 *  $params['date2.*']    когда было отправленно заявление (для шаблона заявления в прокуратуру)
+	 *  $params['date3.*']    когда был получен ответ из ГИБДД (для шаблона заявления в прокуратуру)
+	 *@param array $image массив с картинками (если есть)
+	 */
 	public function getpdf($temp, $params, $image = null){
 		$this->params = pdf1234::regexp($params);
 		if(method_exists(__CLASS__,'text_'.$temp)){
@@ -58,12 +43,11 @@ class pdf1234{
 		
 		$this->template();
 		
-	//	getimage();
+		// Обработка  и вывод картинок
 		if(is_array($image) && $this->temp != 'prosecutor' && $this->temp != 'prosecutor2')
 		{
 			foreach($image as $im_path){
 					if(!empty($im_path)){
-						//$this->pdf->AddPage();
 						$this->pdf->Image($im_path, null, null, 180, 0,'jpg');
 					}
 			}
@@ -74,17 +58,24 @@ class pdf1234{
 		$this->pdf->Output('Statement '.date('Y-m-d H:i:s').'.pdf', 'D');
 	}
 	
-	
+	/**
+	 *Функция очищающая входной массив от символов переносо/разрывов/etc строк
+	 *@param array &$mass
+	 *@return $mass
+	 */
 	protected function regexp($mass){
 		if(is_array($mass) == true){
 			foreach($mass as $key=>$val){
-				$arr[$key] = preg_replace("/\t|\n|\a|\e|\v|\r/", ' ',$val);
+				$mass[$key] = preg_replace("/\t|\n|\a|\e|\v|\r/", ' ',$val);
 			}
-			return $arr;
+			return $mass;
 		}else return false;
 	}
 
-
+	/**
+	 *Возвращает массиив строк для шапки PDF
+	 *@return array
+	 */
 	protected function header(){
 		switch($this->temp)
 		{
@@ -106,6 +97,10 @@ class pdf1234{
 		return $x;
 	}
 	
+	/**
+	 *Название заявления в зависимости от типа
+	 *@return string
+	 */
 	protected function name(){
 		
 		switch($this->temp)
@@ -129,6 +124,10 @@ class pdf1234{
 		return $x;
 	}
 	
+	/**
+	 *Подвал текствовой части заявления
+	 *@return string
+	 */
 	protected function footer()
 	{
 		if($this->note!=0){
@@ -147,7 +146,9 @@ class pdf1234{
 		return $x;
 	}
 
-
+	/**
+	 *Подпись
+	 */
 	protected function signature()
 	{
 		$x = 'Подпись: ';
@@ -288,6 +289,13 @@ class pdf1234{
 		return $ar;
 	}
 	
+	/**
+	 *Разбивает 1 большую строку на маленькие
+	 *@param string $txt большая строка
+	 *@param int $lenght размер маленьких строк
+	 *@param string $encoding кодировка
+	 *@return array $res массив маленьких строк
+	 */
 	protected function slashN($txt, $lenght, $encoding = 'cp1251')
 	{
 		$lenght = (int) $lenght;
@@ -313,7 +321,13 @@ class pdf1234{
 		return $res;
 	}
 	
-	protected function getpages($arr, $betwen_str, $x, $y = null)
+	/**
+	 *Превращает массив строк в текстовый блок
+	 *@param array $arr массив строк
+	 *@param int $betwen_str отстум меджу строками
+	 *@param int $x, $y отступы слева и сверху в PDF
+	 */
+	private function getpages($arr, $betwen_str, $x, $y = null)
 	{
 		foreach($arr as $var){
 			if($y!=null){
@@ -327,6 +341,9 @@ class pdf1234{
 		}
 	}
 	
+	/**
+	 *Верстка основной текстовой области в PDF
+	 */
 	protected function template()
 	{
 
@@ -372,6 +389,9 @@ class pdf1234{
 		$this->pdf->Ln();
 	}
 	
+	/**
+	 *Верстка нижней части документа(подпись, дата)
+	 */
 	protected function getsignature()
 	{
 		$x = pdf1234::signature();
@@ -391,15 +411,15 @@ class pdf1234{
 		$this->pdf->Ln();
 	}
 	
-	public function getEnd($p)
+	/**
+	 *Склоняет слово "фотография" и возвращает окончание, в зависимости от впередистоящего числа
+	 *@param int $p
+	 *@return char $text
+	 */
+	private function getEnd($p)
 	{
-		$end1=substr($p, strlen($p)-2, 2);
 		$end2=substr($p, strlen($p)-1, 1);
-		if((10 <= $end1 && $end1 <= 20) || (5 <= $end2 && $end2 <= 9))
-		{
-			$text='й';
-		}
-		elseif (2 <= $end2 && $end2 <= 4)
+		if (2 <= $end2 && $end2 <= 4)
 		{
 			$text= 'и';
 		}

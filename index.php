@@ -2,9 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "РосЯма");
 $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
-$APPLICATION->SetTitle("Статья 12.34");
 ?>
-
 
 <? if ($APPLICATION->GetCurPage()=="/"):?>
 	<div class="lCol">
@@ -15,7 +13,7 @@ $APPLICATION->SetTitle("Статья 12.34");
 			$news_iblock_id = CIBlock::GetList(array(), array('CODE' => 'news'));
 			$news_iblock_id = $news_iblock_id->Fetch();
 			$news_iblock_id = $news_iblock_id['ID'];
-			if($news_iblock_id)
+			if($news_iblock_id && $_GET['print'] != 'Y')
 			{
 				$APPLICATION->IncludeComponent("bitrix:news.list", "mainpage", array(
 					"IBLOCK_TYPE" => "-",

@@ -266,7 +266,7 @@ class C1234Hole
 		while(false);
 		$address = trim($address, ' ,');
 		$address = str_replace('  ', ' ', $address);
-		
+		$subject_rf = CGreensightRFSubject::GetID($subject_rf);
 		
 		return array
 		(

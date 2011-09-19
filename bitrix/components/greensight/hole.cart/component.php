@@ -114,7 +114,7 @@ if(isset($_GET['pdf']))
 	ob_end_clean();
 	ob_end_clean();
 	ob_end_clean();
-	
+
 	$_images = array();
 	$date3 = isset($_POST['application_data'])   ? strtotime($_POST['application_data']) : time();
 	$date2 = $_POST['form_type'] == 'prosecutor' ? $arResult['HOLE']['DATE_SENT']        : time();
