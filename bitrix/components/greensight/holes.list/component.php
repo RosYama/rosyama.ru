@@ -20,7 +20,7 @@ if(isset($_REQUEST['ajax']))
 
 if(isset($_GET['ID']))
 {
-	$APPLICATION->IncludeComponent('greensight:hole.cart', '', array('ID' => $_GET['ID'], 'PREMODERATION' => $arParams['PREMODERATION']));
+	$APPLICATION->IncludeComponent('greensight:hole.cart', '', array('ID' => (int) $_GET['ID'], 'PREMODERATION' => $arParams['PREMODERATION']));
 	return;
 }
 

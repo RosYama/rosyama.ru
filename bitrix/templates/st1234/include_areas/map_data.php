@@ -1,28 +1,17 @@
-<?php
-?>
-
 <script language="javascript">
 <!--
 
-
-
-function GetCheckNull(){
-
-
-for(var i=0;i<4;i++){
-	document.getElementById("chn" + i).checked = 0;
-	
+function GetCheckNull()
+{
+	for(var i=0;i<4;i++)
+	{
+		document.getElementById("chn" + i).checked = 0;
+	}
+	for(var i=0;i<6;i++)
+	{
+		document.getElementById("ch" + i).checked = 0;
+	}
 }
-
-for(var i=0;i<6;i++){
-	document.getElementById("ch" + i).checked = 0;
-	
-}
-
-}
-
-
-
 -->
 </script>
 <h1><?$APPLICATION->ShowTitle();?></h1>

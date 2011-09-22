@@ -1,3 +1,3 @@
 <p class="collection">
-	Наша коллекция насчитывает<br /><strong><a href="/map/"><?= $arResult['facts'] ?>&nbsp;дефект<?= $arResult['ending1'] == 0 ? '' : ($arResult['ending1'] == 2 ? 'ов' : 'а') ?></a> / <a href="/map/?STATE[3]=gibddre"><?= $arResult['gibddre'] ?>&nbsp; в гибдд</a> / <a href="/map/?STATE[3]=fixed"><?= $arResult['fixed'] ?>&nbsp;исправлен<?= $arResult['ending2'] == 0 ? '' : 'о' ?></a></strong>
+	Наша коллекция насчитывает<br /><strong><a href="/map/"><?= $arResult['facts'] ?>&nbsp;дефект<?= $arResult['ending1'] == 0 ? '' : ($arResult['ending1'] == 2 ? 'ов' : 'а') ?></a> / <a href="/map/?STATE[2]=inprogress"><?= $arResult['inprogress'] ?>&nbsp; в гибдд</a> / <a href="/map/?STATE[3]=fixed"><?= $arResult['fixed'] ?>&nbsp;исправлен<?= $arResult['ending2'] == 0 ? '' : 'о' ?></a></strong>
 </p>

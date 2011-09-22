@@ -19,10 +19,12 @@ IncludeTemplateLangFile(__FILE__);
 		<a <? if(isset($_GET['ID'])){?>
 				href="/<?=(int) $_GET['ID']?>/?print=Y"
 			<?}else{?>
-				href="/?print=Y<?=!empty($_POST['filter_status']) ? htmlspecialchars('&filter_status='.$_POST['filter_status']) : ''?>
-				<?=!empty($_POST['filter_rf_subject']) ? htmlspecialchars('&filter_rf_subject='.$_POST['filter_rf_subject']) : ''?>
-				<?=!empty($_POST['filter_type']) ? htmlspecialchars('&filter_type='.$_POST['filter_type']) : ''?>
-				<?=!empty($_POST['filter_city']) ? htmlspecialchars('&filter_city='.$_POST['filter_city']) : ''?>"
+				href="/?print=Y
+				<?=!empty($_REQUEST['p']) ? htmlspecialchars('&p='.$_REQUEST['p']) : ''?>
+				<?=!empty($_REQUEST['filter_status']) ? htmlspecialchars('&filter_status='.$_REQUEST['filter_status']) : ''?>
+				<?=!empty($_REQUEST['filter_rf_subject']) ? htmlspecialchars('&filter_rf_subject='.$_REQUEST['filter_rf_subject']) : ''?>
+				<?=!empty($_REQUEST['filter_type']) ? htmlspecialchars('&filter_type='.$_REQUEST['filter_type']) : ''?>
+				<?=!empty($_REQUEST['filter_city']) ? htmlspecialchars('&filter_city='.$_REQUEST['filter_city']) : ''?>"
 			<?}?>
 			>
 			Версия для печати

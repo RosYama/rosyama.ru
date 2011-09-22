@@ -195,7 +195,7 @@ class C1234Hole
 			// города - субъекты РФ
 			if($_address[0] == 'Москва' || $_address[0] == 'Санкт-Петербург')
 			{
-				$subject_rf  = $_address[0];
+				$subject_rf  = CGreensightRFSubject::GetID($_address[0]);
 				$city        = $_address[0];
 				$_address[0] = '';
 				$_address[1] = trim($_address[1]);
@@ -225,7 +225,7 @@ class C1234Hole
 				$address    = implode(', ', $_address);
 				break;
 			}
-			$subject_rf  = trim($_address[0]);
+			$subject_rf = trim($_address[0]);
 			$subject_rf = CGreensightRFSubject::GetID($subject_rf);
 			if(!$subject_rf)
 			{
@@ -266,7 +266,6 @@ class C1234Hole
 		while(false);
 		$address = trim($address, ' ,');
 		$address = str_replace('  ', ' ', $address);
-		$subject_rf = CGreensightRFSubject::GetID($subject_rf);
 		
 		return array
 		(
@@ -324,7 +323,7 @@ class C1234Hole
 	
 	/**
 	 * Узнать количество ям всего и количество ям исправленных.
-	 * @return array('facts' => facts, 'fixed' => fixed, 'gibddre' => gibddre)
+	 * @return array('facts' => facts, 'fixed' => fixed, 'gibddre' => gibddre, ...)
 	 */
 	public static function GetCounts()
 	{
@@ -338,6 +337,9 @@ class C1234Hole
 		$_result['gibddre'] = CGreensightDBQueryCache::QueryCached("select count(*) from `b_holes` where `STATE` = 'gibddre' and `PREMODERATED`");
 		$_result['gibddre'] = array_values($_result['gibddre'][0]);
 		$_result['gibddre'] = $_result['gibddre'][0];
+		$_result['inprogress'] = CGreensightDBQueryCache::QueryCached("select count(*) from `b_holes` where `STATE` = 'inprogress' and `PREMODERATED`");
+		$_result['inprogress'] = array_values($_result['inprogress'][0]);
+		$_result['inprogress'] = $_result['inprogress'][0];
 		return $_result;
 	}
 	
