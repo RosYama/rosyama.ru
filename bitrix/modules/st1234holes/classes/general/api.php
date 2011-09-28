@@ -44,11 +44,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -127,9 +127,11 @@ class C1234HoleApi
 					{
 						if
 						(
-							$file['type']    != 'image/png'
-							&& $file['type'] != 'image/jpeg'
-							&& $file['type'] != 'image/gif'
+							$file['type']    != 'image/png' 
+							&& $file['type'] != 'image/x-png' 
+							&& $file['type'] != 'image/jpeg' 
+							&& $file['type'] != 'image/pjpeg' 
+							&& $file['type'] != 'image/gif' 
 							&& $file['type']
 						)
 						{
@@ -246,7 +248,7 @@ class C1234HoleApi
 				{
 					$USER->Logout();
 				}
-				$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+				$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 				if($auth_result === true)
 				{
 					echo C1234HoleApiXML::UserAuthParams();
@@ -260,7 +262,7 @@ class C1234HoleApi
 			case 'checkauth':
 			{
 				// проверка авторизованности
-				$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+				$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 				if($auth_result === true)
 				{
 					echo "\t".'<checkauthresult result="1">ok</checkauthresult>'."\n";
@@ -279,11 +281,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -333,11 +335,11 @@ class C1234HoleApi
 				// предварительная авторизация
 				if($_POST['passwordhash'])
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 				}
 				else
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 				}
 				if($auth_result !== true)
 				{
@@ -382,11 +384,11 @@ class C1234HoleApi
 				// предварительная авторизация
 				if($_POST['passwordhash'])
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 				}
 				else
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 				}
 				if($auth_result !== true)
 				{
@@ -437,11 +439,11 @@ class C1234HoleApi
 					// предварительная авторизация
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -654,11 +656,11 @@ class C1234HoleApi
 				// предварительная авторизация
 				if($_POST['passwordhash'])
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 				}
 				else
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 				}
 				if($auth_result !== true)
 				{
@@ -735,11 +737,11 @@ class C1234HoleApi
 				// предварительная авторизация
 				if($_POST['passwordhash'])
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 				}
 				else
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 				}
 				if($auth_result !== true)
 				{
@@ -763,11 +765,11 @@ class C1234HoleApi
 				// предварительная авторизация
 				if($_POST['passwordhash'])
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+					$auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 				}
 				else
 				{
-					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+					$auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 				}
 				if($auth_result !== true)
 				{
@@ -859,11 +861,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -980,9 +982,11 @@ class C1234HoleApi
 					{
 						if
 						(
-							$file['type']    != 'image/png'
-							&& $file['type'] != 'image/jpeg'
-							&& $file['type'] != 'image/gif'
+							$file['type']    != 'image/png' 
+							&& $file['type'] != 'image/x-png' 
+							&& $file['type'] != 'image/jpeg' 
+							&& $file['type'] != 'image/pjpeg' 
+							&& $file['type'] != 'image/gif' 
 							&& $file['type']
 						)
 						{
@@ -1073,11 +1077,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -1121,11 +1125,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -1170,11 +1174,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -1288,11 +1292,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -1359,11 +1363,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{
@@ -1414,9 +1418,11 @@ class C1234HoleApi
 					{
 						if
 						(
-							$file['type']    != 'image/png'
-							&& $file['type'] != 'image/jpeg'
-							&& $file['type'] != 'image/gif'
+							$file['type']    != 'image/png' 
+							&& $file['type'] != 'image/x-png' 
+							&& $file['type'] != 'image/jpeg' 
+							&& $file['type'] != 'image/pjpeg' 
+							&& $file['type'] != 'image/gif' 
 							&& $file['type']
 						)
 						{
@@ -1478,11 +1484,11 @@ class C1234HoleApi
 				{
 					if($_POST['passwordhash'])
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'Y', 'N');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['passwordhash'], 'N', 'N');
 					}
 					else
 					{
-						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'Y', 'Y');
+						$auth_result = $auth_result = $USER->Login($_POST['login'], $_POST['password'], 'N', 'Y');
 					}
 					if($auth_result !== true)
 					{

@@ -39,3 +39,8 @@ function makeMapSmall()
 	var a = document.getElementById('ymapcontainer_big');
 	a.style.display = 'none';
 }
+
+function selectAll(obj) {
+  obj.focus()
+  obj.select()
+}

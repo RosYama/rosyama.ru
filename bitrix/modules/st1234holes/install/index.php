@@ -52,7 +52,7 @@ class st1234holes extends CModule
 				`COMMENT_GIBDD_REPLY` text,
 				`GIBDD_REPLY_RECEIVED` tinyint(1) DEFAULT '0',
 				`PREMODERATED` tinyint(1) DEFAULT '0',
-				`DATE_SENT_PROSECUTOR` INTEGER UNSIGNED,
+				`DATE_SENT_PROSECUTOR` INTEGER UNSIGNED default null,
 				PRIMARY KEY (`ID`)
 			  ) ENGINE=MyISAM DEFAULT CHARSET=utf8");
 			$DB->Query("CREATE TABLE `b_gs_geoip` (

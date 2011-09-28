@@ -562,6 +562,10 @@ div.submit input {font: normal 1em "Trebuchet MS", Arial, sans-serif; margin-rig
 				text-decoration: underline;
 			}
 			
+			.footer .friends {
+				margin-top: 80px;
+			}
+			
 			.autochmo {
 				float: right;
 			}

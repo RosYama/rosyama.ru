@@ -26,11 +26,12 @@ IncludeTemplateLangFile(__FILE__);
 				<?=!empty($_REQUEST['filter_type']) ? htmlspecialchars('&filter_type='.$_REQUEST['filter_type']) : ''?>
 				<?=!empty($_REQUEST['filter_city']) ? htmlspecialchars('&filter_city='.$_REQUEST['filter_city']) : ''?>"
 			<?}?>
-			>
+			target="_blank">
 			Версия для печати
 		</a>
 		<?}?>
 		<? $APPLICATION->IncludeComponent('greensight:holes.counter', 'footer'); ?>
+		<p class="friends">Чиним ямы и <a href="http://ukryama.com/">в Украине</a></p>
 	</div>
 </div>
 <script type="text/javascript">

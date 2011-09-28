@@ -207,3 +207,15 @@ div.rCol .before:after, div.rCol .after:after {
 	visibility: hidden;
 	overflow: hidden;
 }
+
+
+.bbcode
+{
+	margin-top:4em;
+}
+.bbcode input, .bbcode textarea
+{
+	width:100%;
+	resize:none;
+	margin-bottom:10px;
+}

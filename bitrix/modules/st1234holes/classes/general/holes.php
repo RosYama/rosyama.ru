@@ -519,7 +519,6 @@ class C1234Hole
 						}
 					}
 				}
-
 				closedir($f);
 				sort($v['pictures']['small']['fresh']);
 				sort($v['pictures']['medium']['fresh']);
@@ -547,6 +546,7 @@ class C1234Hole
 		switch($_image_info['mime'])
 		{
 			case 'image/jpeg':
+			case 'image/pjpg':
 			{
 				$operator = 'imagecreatefromjpeg';
 				break;
@@ -557,6 +557,7 @@ class C1234Hole
 				break;
 			}
 			case 'image/png':
+			case 'image/x-png':
 			{
 				$operator = 'imagecreatefrompng';
 				break;

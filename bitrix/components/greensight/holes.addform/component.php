@@ -191,13 +191,12 @@ $arElement['~COORDINATES_R'] = $arElement['~COORDINATES_R'][1].','.$arElement['~
 if($_POST)
 {
 	// трансляция полей поста для обратной совместимости
-	// с кустарными приложениями. после открытия апи это можно будет
-	// убрать
-	if(isset($_POST['COMMENT'])     && !isset($_POST['comment']))     $_POST['comment']     = $_POST['COMMENT'];
-	if(isset($_POST['ADDRESS'])     && !isset($_POST['address']))     $_POST['address']     = $_POST['ADDRESS'];
-	if(isset($_POST['TYPE'])        && !isset($_POST['type']))        $_POST['type']        = $_POST['TYPE'];
-	if(isset($_POST['COORDINATES']) && !isset($_POST['coordinates'])) $_POST['coordinates'] = implode(',', array_reverse(explode(',', $_POST['COORDINATES'])));
-	
+    // с кустарными приложениями. после открытия апи это можно будет
+    // убрать
+    if(isset($_POST['COMMENT'])     && !isset($_POST['comment']))     $_POST['comment']     = $_POST['COMMENT'];
+    if(isset($_POST['ADDRESS'])     && !isset($_POST['address']))     $_POST['address']     = $_POST['ADDRESS'];
+    if(isset($_POST['TYPE'])        && !isset($_POST['type']))        $_POST['type']        = $_POST['TYPE'];
+    if(isset($_POST['COORDINATES']) && !isset($_POST['coordinates'])) $_POST['coordinates'] = implode(',', array_reverse(explode(',', $_POST['COORDINATES'])));
 	do
 	{
 		$_POST['ID'] = (int)$_POST['ID'];

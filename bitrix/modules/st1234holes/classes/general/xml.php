@@ -98,7 +98,7 @@ class C1234HoleApiXML
 	{
 		global $USER;
 		$hash = str_replace('<', '&lt;', $USER->GetParam('PASSWORD_HASH'));
-		$hash = str_replace('>', '&gt;', $USER->GetParam('PASSWORD_HASH'));
+		$hash = str_replace('>', '&gt;', $hash);
 		?>
 	<user id="<?= $USER->GetID() ?>">
 		<username full="<?= htmlspecialcharsEx(trim($USER->GetParam('NAME').' '.$USER->GetParam('LAST_NAME').' '.$USER->GetParam('SECOND_NAME'))) ?>">

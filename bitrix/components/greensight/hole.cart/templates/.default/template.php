@@ -119,7 +119,7 @@ $hole = $arResult['HOLE'];
 											</tr>
 											<tr>
 												<th><?= GetMessage('HOLE_PRESECUTOR_FORM_ADDRESS') ?></th>
-												<td><textarea rows="3" cols="40" id="prosecutor_form_address" name="address"><?= htmlspecialcharsEx($hole['ADDRESS']) ?></textarea></td>
+												<td><textarea rows="3" cols="40" id="prosecutor_form_address" name="address"><?= htmlspecialcharsEx($hole['ESS']) ?></textarea></td>
 											</tr>
 											<tr>
 												<th><?= GetMessage('HOLE_PRESECUTOR_FORM_GIBDD') ?><span class="comment"><?= GetMessage('HOLE_PRESECUTOR_FORM_GIBDD_COMMENT') ?></span></th>
@@ -331,8 +331,18 @@ $hole = $arResult['HOLE'];
 			YMaps.Events.observe(placemark, placemark.Events.Click, function () { toggleMap(); } );
 			map.addOverlay(placemark);
 		</script>
+		
 		<div class="comment">
 			<?= $hole['COMMENT1'] ?>
+		</div>
+		<div class="bbcode">
+			<p><b>Ссылка на эту страницу:</b></p>
+			<input onfocus="selectAll(this)" type="text" value="<?="<a href='http://".$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()."'> РосЯма на ".htmlspecialcharsEx($hole['ADDRESS'])."</a>"?>"/>
+			<p><b>BBcode для форума:</b></p>
+			<textarea onfocus="selectAll(this)" rows="3">[url=http://<?=$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()?>][img]http://<?=$_SERVER["SERVER_NAME"].$hole['pictures']['medium']['fresh'][0]?>[/img][/url][url=http://<?=$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()?>] 
+			РосЯма на <?=htmlspecialcharsEx($hole['ADDRESS'])?>[/url]</textarea>
+			
+			
 		</div>
 </div>
 <div class="rCol">
