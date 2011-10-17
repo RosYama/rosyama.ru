@@ -16,6 +16,6 @@ $MESS['HOLE_TYPE_policeman']   = 'Лежачий полицейский';
 $MESS['HOLE_TYPE_fence']       = 'Ограждение';
 $MESS['HOLE_TYPE_holeinyard']  = 'Яма во дворе';
 $MESS['HOLE_TYPE_light']       = 'Светофор';
-$MESS['NOHOLES']               = 'К сожалению, ни одного дефекта не найдено.<br><a href="/personal/add.php">Добавить?</a>';
+$MESS['NOHOLES']               = 'Ни одного дефекта не найдено.<br><a href="/personal/add.php">Добавить?</a>';
 
 ?>
