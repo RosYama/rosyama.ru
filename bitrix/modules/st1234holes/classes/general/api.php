@@ -1228,9 +1228,11 @@ class C1234HoleApi
 					{
 						if
 						(
-							$file['type']    != 'image/png'
-							&& $file['type'] != 'image/jpeg'
-							&& $file['type'] != 'image/gif'
+							$file['type']    != 'image/png' 
+							&& $file['type'] != 'image/x-png' 
+							&& $file['type'] != 'image/jpeg' 
+							&& $file['type'] != 'image/pjpeg' 
+							&& $file['type'] != 'image/gif' 
 							&& $file['type']
 						)
 						{

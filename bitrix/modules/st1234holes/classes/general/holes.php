@@ -250,7 +250,6 @@ class C1234Hole
 				// точка попала фиг знает куда
 				else
 				{
-					$subject_rf = 0;
 					$city       = '';
 					$address    = implode(', ', $_address);
 					break;
@@ -266,7 +265,6 @@ class C1234Hole
 		while(false);
 		$address = trim($address, ' ,');
 		$address = str_replace('  ', ' ', $address);
-		
 		return array
 		(
 			'subject_rf' => $subject_rf,

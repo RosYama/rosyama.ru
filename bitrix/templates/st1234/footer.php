@@ -31,7 +31,7 @@ IncludeTemplateLangFile(__FILE__);
 		</a>
 		<?}?>
 		<? $APPLICATION->IncludeComponent('greensight:holes.counter', 'footer'); ?>
-		<p class="friends">Чиним ямы и <a href="http://ukryama.com/">в Украине</a></p>
+		<p class="friends">Чиним ямы <a href="http://ukryama.com/">в Украине</a>, <a href="http://belyama.by/">Белоруси</a> и <a href="http://kazyama.kz/">Казахстане</a></p>
 	</div>
 </div>
 <script type="text/javascript">
@@ -87,15 +87,11 @@ reformal_wdg_bimage = "fb17bdca7e3a07420c91c07d5ef7e4f4.png";
 	
 	<script type="text/javascript">
 	$(document).ready(function(){				
-						$('.close').click(function(){
-								$('#popupdiv').fadeOut(400);
-								$('#fon').fadeOut(600);
-								$('#addDiv').fadeOut(800);
-								
-								
-										
-							})
-							
+		$('.close').click(function(){
+			$('#popupdiv').fadeOut(400);
+			$('#fon').fadeOut(600);
+			$('#addDiv').fadeOut(800);
+		})
 	})
 
 	</script>

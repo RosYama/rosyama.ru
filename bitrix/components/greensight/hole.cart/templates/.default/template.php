@@ -337,7 +337,7 @@ $hole = $arResult['HOLE'];
 		</div>
 		<div class="bbcode">
 			<p><b>Ссылка на эту страницу:</b></p>
-			<input onfocus="selectAll(this)" type="text" value="<?="<a href='http://".$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()."'> РосЯма на ".htmlspecialcharsEx($hole['ADDRESS'])."</a>"?>"/>
+			<input onfocus="selectAll(this)" type="text" value="<?="<a href='http://".$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()."'>РосЯма :: ".htmlspecialcharsEx($hole['ADDRESS'])."</a>"?>"/>
 			<p><b>BBcode для форума:</b></p>
 			<textarea onfocus="selectAll(this)" rows="3">[url=http://<?=$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()?>][img]http://<?=$_SERVER["SERVER_NAME"].$hole['pictures']['medium']['fresh'][0]?>[/img][/url][url=http://<?=$_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()?>] 
 			РосЯма на <?=htmlspecialcharsEx($hole['ADDRESS'])?>[/url]</textarea>
