@@ -31,7 +31,7 @@ IncludeTemplateLangFile(__FILE__);
 		</a>
 		<?}?>
 		<? $APPLICATION->IncludeComponent('greensight:holes.counter', 'footer'); ?>
-		<p class="friends">Чиним ямы <a href="http://ukryama.com/">в Украине</a>, <a href="http://belyama.by/">Белоруси</a> и <a href="http://kazyama.kz/">Казахстане</a></p>
+		<p class="friends">Чиним ямы <a href="http://ukryama.com/">в Украине</a>, <a href="http://belyama.by/">Беларуси</a> и <a href="http://kazyama.kz/">Казахстане</a></p>
 	</div>
 </div>
 <script type="text/javascript">
