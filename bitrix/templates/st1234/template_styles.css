@@ -606,8 +606,14 @@ div.news-list-mainpage
 	background-color:#fcfde9;
 	padding: 19px 25px 19px 20px;
 	margin-bottom:19px;
-	
 }
+	.news-item p{
+		white-space: pre-wrap;
+		white-space: -moz-pre-wrap;
+		white-space: -pre-wrap;
+		white-space: -o-pre-wrap;
+		word-wrap: break-word;
+	}
 
 div.news-list-mainpage a, div.news-list a
 {

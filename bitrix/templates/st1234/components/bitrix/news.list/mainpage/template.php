@@ -7,7 +7,7 @@
 		<?endif?>	
 		
 		<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arItem["PREVIEW_TEXT"]):?>
-			<?echo $arItem["PREVIEW_TEXT"];?>
+			<p><?echo $arItem["PREVIEW_TEXT"];?></p>
 		<?endif;?>
 		
 		<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>

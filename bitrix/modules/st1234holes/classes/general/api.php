@@ -420,8 +420,8 @@ class C1234HoleApi
 				}
 				$arElement['GIBDD'] = implode(' ', $arElement['GIBDD']);
 				echo "\t".'<gibddhead subjectid="'.$hole['ADR_SUBJECTRF'].'">'."\n";
-				echo "\t\t".'<nominative post="'.htmlspecialcharsEx($arElement['PROPERTY_POST_VALUE']).'" gibdd="'.htmlspecialcharsEx($arElement['GIBDD']).'">'.htmlspecialcharsEx($arElement['PROPERTY_FIO_VALUE']).'</nominative>'."\n";
-				echo "\t\t".'<dative post="'.htmlspecialcharsEx($arElement['PROPERTY_POST_DATIVE_VALUE']).'">'.htmlspecialcharsEx($arElement['PROPERTY_FIO_DATIVE_VALUE']).'</dative>'."\n";
+				echo "\t\t".'<nominative post="'.htmlspecialchars($arElement['PROPERTY_POST_VALUE']).'" gibdd="'.htmlspecialchars($arElement['GIBDD']).'">'.htmlspecialchars($arElement['PROPERTY_FIO_VALUE']).'</nominative>'."\n";
+				echo "\t\t".'<dative post="'.htmlspecialchars($arElement['PROPERTY_POST_DATIVE_VALUE']).'">'.htmlspecialchars($arElement['PROPERTY_FIO_DATIVE_VALUE']).'</dative>'."\n";
 				echo "\t".'</gibddhead>'."\n";
 				break;
 			}
@@ -591,15 +591,15 @@ class C1234HoleApi
 				}
 				if($_REQUEST['filter_city'])
 				{
-					$arFilter['ADR_CITY'] = htmlspecialcharsEx(str_replace('%', '', $_REQUEST['filter_city']));
+					$arFilter['ADR_CITY'] = htmlspecialchars(str_replace('%', '', $_REQUEST['filter_city']));
 				}
 				if($_REQUEST['filter_type'])
 				{
-					$arFilter['TYPE'] = htmlspecialcharsEx($_REQUEST['filter_type']);
+					$arFilter['TYPE'] = htmlspecialchars($_REQUEST['filter_type']);
 				}
 				if($_REQUEST['filter_status'])
 				{
-					$arFilter['STATE'] = htmlspecialcharsEx($_REQUEST['filter_status']);
+					$arFilter['STATE'] = htmlspecialchars($_REQUEST['filter_status']);
 				}
 				if($bPremoderation)
 				{
@@ -798,15 +798,15 @@ class C1234HoleApi
 				}
 				if($_REQUEST['filter_city'])
 				{
-					$arFilter['ADR_CITY'] = htmlspecialcharsEx(str_replace('%', '', $_REQUEST['filter_city']));
+					$arFilter['ADR_CITY'] = htmlspecialchars(str_replace('%', '', $_REQUEST['filter_city']));
 				}
 				if($_REQUEST['filter_type'])
 				{
-					$arFilter['TYPE'] = htmlspecialcharsEx($_REQUEST['filter_type']);
+					$arFilter['TYPE'] = htmlspecialchars($_REQUEST['filter_type']);
 				}
 				if($_REQUEST['filter_status'])
 				{
-					$arFilter['STATE'] = htmlspecialcharsEx($_REQUEST['filter_status']);
+					$arFilter['STATE'] = htmlspecialchars($_REQUEST['filter_status']);
 				}
 				// параметры навигации
 				$arNavParams = array();

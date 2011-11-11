@@ -36,6 +36,13 @@ $aMenu[] = array(
 				"url"      => "greensight_iblock_import.php",
 				"more_url" => array(),
 				"title"    => GetMessage('GREENSIGHT_IBLOCK_STRUCTURE_IMPORT')
+			),
+			array
+			(
+				"text"     => GetMessage('GREENSIGHT_UPDATE'),
+				"url"      => "greensight_update.php",
+				"more_url" => array(),
+				"title"    => GetMessage('GREENSIGHT_UPDATE')
 			)
 		)
 	);

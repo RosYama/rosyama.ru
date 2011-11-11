@@ -23,9 +23,9 @@ class C1234HoleApiXML
 			$u = $u->Fetch();
 			$_users[$hole['USER_ID']] = array
 			(
-				'NAME'        => htmlspecialcharsEx(trim($u['NAME'])),
-				'SECOND_NAME' => htmlspecialcharsEx(trim($u['SECOND_NAME'])),
-				'LAST_NAME'   => htmlspecialcharsEx(trim($u['LAST_NAME'])),
+				'NAME'        => htmlspecialchars(trim($u['NAME'])),
+				'SECOND_NAME' => htmlspecialchars(trim($u['SECOND_NAME'])),
+				'LAST_NAME'   => htmlspecialchars(trim($u['LAST_NAME'])),
 			);
 		}
 		ob_start();
@@ -39,15 +39,15 @@ class C1234HoleApiXML
 		</username>
 		<latitude><?= $hole['LATITUDE'] ?></latitude>
 		<longitude><?= $hole['LONGITUDE'] ?></longitude>
-		<address city="<?= htmlspecialcharsEx(trim($hole['ADR_CITY'])) ?>" subjectrf="<?= $hole['ADR_SUBJECTRF'] ?>"><?= htmlspecialcharsEx($hole['ADDRESS']) ?></address>
+		<address city="<?= htmlspecialchars(trim($hole['ADR_CITY'])) ?>" subjectrf="<?= $hole['ADR_SUBJECTRF'] ?>"><?= htmlspecialchars($hole['ADDRESS']) ?></address>
 		<state code="<?= $hole['STATE'] ?>"><?= GetMessage('HOLE_STATE_'.$hole['STATE']) ?></state>
 		<type code="<?= $hole['TYPE'] ?>"><?= GetMessage('HOLE_TYPE_'.$hole['TYPE']) ?></type>
 		<datecreated readable="<?= $hole['~DATE_CREATED'] ?>"><?= $hole['DATE_CREATED'] ?></datecreated>
 		<datesent readable="<?= $hole['~DATE_SENT'] ?>"><?= $hole['DATE_SENT'] ?></datesent>
 		<datestatus readable="<?= $hole['~DATE_STATUS'] ?>"><?= $hole['DATE_STATUS'] ?></datestatus>
-		<commentfresh><?= htmlspecialcharsEx($hole['COMMENT1']) ?></commentfresh>
-		<commentfixed><?= htmlspecialcharsEx($hole['COMMENT2']) ?></commentfixed>
-		<commentgibddre><?= htmlspecialcharsEx($hole['COMMENT_GIBDD_REPLY']) ?></commentgibddre>
+		<commentfresh><?= htmlspecialchars($hole['COMMENT1']) ?></commentfresh>
+		<commentfixed><?= htmlspecialchars($hole['COMMENT2']) ?></commentfixed>
+		<commentgibddre><?= htmlspecialchars($hole['COMMENT_GIBDD_REPLY']) ?></commentgibddre>
 		<pictures><? echo "\n\t\t"; foreach($hole['pictures'] as $type => $p): ?>
 	<<?= $type ?>>
 				<fresh><? if(sizeof($p['fresh'])) { echo "\n\t"; } foreach($p['fresh'] as $k => $v): ?>
@@ -101,10 +101,10 @@ class C1234HoleApiXML
 		$hash = str_replace('>', '&gt;', $hash);
 		?>
 	<user id="<?= $USER->GetID() ?>">
-		<username full="<?= htmlspecialcharsEx(trim($USER->GetParam('NAME').' '.$USER->GetParam('LAST_NAME').' '.$USER->GetParam('SECOND_NAME'))) ?>">
-			<name><?= htmlspecialcharsEx(trim($USER->GetParam('NAME'))) ?></name>
-			<secondname><?= htmlspecialcharsEx(trim($USER->GetParam('SECOND_NAME'))) ?></secondname>
-			<lastname><?= htmlspecialcharsEx(trim($USER->GetParam('LAST_NAME'))) ?></lastname>
+		<username full="<?= htmlspecialchars(trim($USER->GetParam('NAME').' '.$USER->GetParam('LAST_NAME').' '.$USER->GetParam('SECOND_NAME'))) ?>">
+			<name><?= htmlspecialchars(trim($USER->GetParam('NAME'))) ?></name>
+			<secondname><?= htmlspecialchars(trim($USER->GetParam('SECOND_NAME'))) ?></secondname>
+			<lastname><?= htmlspecialchars(trim($USER->GetParam('LAST_NAME'))) ?></lastname>
 		</username>
 		<passwordhash><?= $hash ?></passwordhash>
 	</user><? echo "\n";
