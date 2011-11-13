@@ -3,14 +3,14 @@
 <h2><?=GetMessage('PIT_SITY')?>:</h2>
 <div class="stats">
 	<?foreach($arResult['geography'][0] as $ar){?>
-		<a href="/?filter_city=<?=htmlspecialchars($ar['adr_city'])?>"><?=htmlspecialchars($ar['adr_city'])?></a>&nbsp; &mdash;  <?=$ar['counts']?><br>
+		<a href="/?filter_city=<?=htmlspecialchars(trim($ar['adr_city']))?>"><?=htmlspecialchars(trim($ar['adr_city']))?></a>&nbsp; &mdash;  <?=$ar['counts']?><br>
 	<?}?>
 </div>
 
 <h2><?=GetMessage('FIXED_PIT_SITY')?>:</h2>
 <div class="stats">
 <?foreach($arResult['geography'][1] as $ar){?>
-	<a href="/?filter_city=<?=htmlspecialchars($ar['adr_city'])?>&filter_status=fixed"><?=htmlspecialchars($ar['adr_city'])?></a>&nbsp; &mdash;  <?=$ar['counts']?><br>
+	<a href="/?filter_city=<?=htmlspecialchars(trim($ar['adr_city']))?>&filter_status=fixed"><?=htmlspecialchars(trim($ar['adr_city']))?></a>&nbsp; &mdash;  <?=$ar['counts']?><br>
 <?}?>
 </div>
 
