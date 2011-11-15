@@ -1,25 +1,23 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
-/// Ïîäêëþ÷åíèå ìîäóëÿ äëÿ ðàáîòû ñ çàïèñÿìè ÿì
+/// ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ñ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð·Ð°Ð¿Ð¸ÑÑÐ¼Ð¸ ÑÐ¼
 if(!CModule::IncludeModule('greensight_utils'))
 {
 	die();
 }
 
-/// Ïî óìîë÷àíèþ âåðñèÿ êàðò 1.0
+/// ÐŸÐ¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð²ÐµÑ€ÑÐ¸Ñ ÐºÐ°Ñ€Ñ‚ 1.0
 if (!isset($arParams['YANDEX_VERSION']))
 	$arParams['YANDEX_VERSION'] = '1.0';
 
 $arParams['KEY'] = trim($arParams['KEY']);
 
-
-/// Îïðåäåëåíèå êëþ÷à êàðòû ïî àäðåñó ñåðâåðà èëè èç íàñòðîåê ìîäóëÿ
+/// ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ ÐºÐ»ÑŽÑ‡Ð° ÐºÐ°Ñ€Ñ‚Ñ‹ Ð¿Ð¾ Ð°Ð´Ñ€ÐµÑÑƒ ÑÐµÑ€Ð²ÐµÑ€Ð° Ð¸Ð»Ð¸ Ð¸Ð· Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ð¼Ð¾Ð´ÑƒÐ»Ñ
 if (!$arParams['KEY'] && !$arParams['WAIT_FOR_EVENT'])
 {
 	$MAP_KEY = '';
 	$strMapKeys = COption::GetOptionString('fileman', 'map_yandex_keys');
-
 	$strDomain = $_SERVER['HTTP_HOST'];
 	$wwwPos = strpos($strDomain, 'www.');
 	if ($wwwPos === 0)
@@ -57,16 +55,12 @@ if (!$arParams['KEY'] && !$arParams['WAIT_FOR_EVENT'])
 }
 
 $arParams['DEV_MODE'] = $arParams['DEV_MODE'] == 'Y' ? 'Y' : 'N';
-/*if ($APPLICATION->GetPublicShowMode() != 'view')
-	$arParams['DEV_MODE'] = 'Y';*/
 
 if (!defined('BX_YMAP_SCRIPT_LOADED'))
 {
-	//$APPLICATION->AddHeadScript('/bitrix/js/main/utils.js');
-	
 	if ($arParams['DEV_MODE'] != 'Y')
 	{
-		/// Äîáàâëåíèå java ñêðèïòà êàðòû
+		/// Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ java ÑÐºÑ€Ð¸Ð¿Ñ‚Ð° ÐºÐ°Ñ€Ñ‚Ñ‹
 		$APPLICATION->AddHeadString(
 			'<script src="http://api-maps.yandex.ru/'.$arParams['YANDEX_VERSION'].'/?key='.$arParams['KEY'].'&wizard=bitrix" type="text/javascript" charset="utf-8"></script>'
 		);
@@ -96,7 +90,7 @@ else
 	
 	list($arParams['INIT_MAP_LAT'], $arParams['INIT_MAP_LON']) = array_values(CGreensightGeoip::GetCoordinatesByIP($forwarded_for ? $forwarded_for : $_SERVER['REMOTE_ADDR']));
 	
-	/// Ìàññèâ äàííûõ ìàñøòàáà è ïîëîæåíèÿ êàðòû
+	/// ÐœÐ°ÑÑÐ¸Ð² Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¼Ð°ÑÑˆÑ‚Ð°Ð±Ð° Ð¸ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ°Ñ€Ñ‚Ñ‹
 	if(!$arParams['INIT_MAP_LAT'] || !$arParams['INIT_MAP_LON'])
 	{
 		$arParams['INIT_MAP_LON'] = floatval($arParams['INIT_MAP_LON']);
@@ -107,7 +101,6 @@ else
 	$arParams['INIT_MAP_SCALE'] = intval($arParams['INIT_MAP_SCALE']);
 	$arParams['INIT_MAP_SCALE'] = $arParams['INIT_MAP_SCALE'] ? $arParams['INIT_MAP_SCALE'] : 10;
 }
-
 
 $arResult['ALL_MAP_TYPES'] = array('MAP', 'SATELLITE', 'HYBRID');
 $arResult['ALL_MAP_OPTIONS'] = array('ENABLE_SCROLL_ZOOM' => 'ScrollZoom', 'ENABLE_DBLCLICK_ZOOM' => 'DblClickZoom', 'ENABLE_DRAGGING' => 'Dragging', 'ENABLE_HOTKEYS' => 'HotKeys', 'ENABLE_RULER' => 'Ruler');

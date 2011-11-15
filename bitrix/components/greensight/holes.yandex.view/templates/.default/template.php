@@ -45,6 +45,7 @@ else:
 			$arTransParams['WAIT_FOR_EVENT'] = $arParams['WAIT_FOR_EVENT'];
 	}
 ?>
+
 <div class="bx-yandex-view-layout">
 	<div class="bx-yandex-view-map">
 <?
@@ -52,6 +53,7 @@ else:
 $arTransParams['ONMAPREADY2'] = 'BXWaitForMap_search'.$arParams['MAP_ID'];
 	$APPLICATION->IncludeComponent('greensight:holes.yandex.system', '.default', $arTransParams, false, array('HIDE_ICONS' => 'Y'));
 ?>
+
 	</div>
 </div>
 <img src="<?=SITE_TEMPLATE_PATH?>/images/map_shadow.jpg" class="mapShadow" alt="" />
@@ -102,12 +104,20 @@ function BX_SetPlacemarks_<?echo $arParams['MAP_ID']?>(map)
 	YMaps.Events.observe(map, map.Events.MoveEnd, function() {
 		var res = "{ 'center': '" + map.getCenter() + "', 'zoom': '" + map.getZoom() + "' }"
 		document.cookie = "map_settings="+res
+		res = "center:" + map.getCenter() + ";zoom:" + map.getZoom();
+		var loc = new String(document.location);
+		loc = loc.split('#');
+		document.location = loc[0] + '#' + res;
 		GetPlacemarks(map);
 	} );
 	YMaps.Events.observe(map, map.Events.Move, function() { GetPlacemarks(map);	} );
 	YMaps.Events.observe(map, map.Events.Update, function() {
 		var res = "{ 'center': '" + map.getCenter() + "', 'zoom': '" + map.getZoom() + "' }"
 		document.cookie = "map_settings="+res
+		res = "center:" + map.getCenter() + ";zoom:" + map.getZoom();
+		var loc = new String(document.location);
+		loc = loc.split('#');
+		document.location = loc[0] + '#' + res;
 		GetPlacemarks(map);
 	} );
 	GetPlacemarks(map);

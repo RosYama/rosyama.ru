@@ -9,7 +9,7 @@ $arParams['MAP_ID'] =
 	'MAP_'.RandString() : $arParams['MAP_ID']; 
 
 
-/// Îáðàáîòêà ñïèñêà îáúåêòîâ íà êàðòå
+/// ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° ÑÐ¿Ð¸ÑÐºÐ° Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² Ð½Ð° ÐºÐ°Ñ€Ñ‚Ðµ
 if (($strPositionInfo = $arParams['~MAP_DATA']) && CheckSerializedData($strPositionInfo) && ($arResult['POSITION'] = unserialize($strPositionInfo)))
 {
 	if (is_array($arResult['POSITION']) && is_array($arResult['POSITION']['PLACEMARKS']) && ($cnt = count($arResult['POSITION']['PLACEMARKS'])))
@@ -28,8 +28,6 @@ if (($strPositionInfo = $arParams['~MAP_DATA']) && CheckSerializedData($strPosit
 		}
 	}
 }
-
-
 
 $arResult['FILTER_STATES'] = array();
 foreach($_REQUEST['STATE'] as $k => $v)

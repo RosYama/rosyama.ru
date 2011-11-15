@@ -2,15 +2,12 @@
 
 // возвращает (аяксом) джаваскрипт с данными о ямах, попадающих в указанную область
 
-
-
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 ob_end_clean();
 ob_end_clean();
 ob_end_clean();
 ob_end_clean();
 ob_end_clean();
-
 
 /// Подключение модуля обработки ям
 if(!CModule::IncludeModule('st1234holes'))
@@ -60,8 +57,6 @@ else
 		array('nopicts' => true)
 	);
 }
-
-
 
 /// Создание объектов карты 
 foreach($res as &$hole)
