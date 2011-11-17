@@ -623,7 +623,7 @@ class C1234Hole
 		while($f = readdir($dir))
 		{
 			$f = explode('.', $f);
-			$f = (int)$f[0];
+			$f = (int)preg_replace('/\D/', '', $f[0]);
 			$file_counter = max($file_counter, $f);
 			$all_files++;
 		}

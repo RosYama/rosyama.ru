@@ -33,8 +33,9 @@ if($arResult['HOLE']['DATE_STATUS'])
 {
 	$arResult['HOLE']['~DATE_STATUS'] = CGreensightUtils::timestamp2human($arResult['HOLE']['DATE_STATUS']);
 }
-$arResult['HOLE']['COMMENT1'] = nl2br(htmlspecialcharsEx($arResult['HOLE']['COMMENT1']));
-$arResult['HOLE']['COMMENT2'] = nl2br(htmlspecialcharsEx($arResult['HOLE']['COMMENT2']));
+$arResult['HOLE']['COMMENT1']            = nl2br(htmlspecialcharsEx($arResult['HOLE']['COMMENT1']));
+$arResult['HOLE']['COMMENT2']            = nl2br(htmlspecialcharsEx($arResult['HOLE']['COMMENT2']));
+$arResult['HOLE']['COMMENT_GIBDD_REPLY'] = nl2br(htmlspecialcharsEx($arResult['HOLE']['COMMENT_GIBDD_REPLY']));
 if($arResult['HOLE']['STATE'] == 'inprogress' && $arResult['HOLE']['DATE_SENT'] && !$arResult['HOLE']['GIBDD_REPLY_RECEIVED'])
 {
 	$arResult['HOLE']['WAIT_DAYS'] = 38 - ceil((time() - $arResult['HOLE']['DATE_SENT']) / 86400);

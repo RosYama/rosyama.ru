@@ -114,7 +114,6 @@ function init_<?= $arParams['MAP_ID']?>(context)
 		loc[0] = loc[0].split(':');
 		loc[1] = loc[1].split(':');
 		loc[0][1] = loc[0][1].split(',');
-		//alert(loc[0][1] + ' ' + loc[1][1])
 		map.setCenter(new context.YMaps.GeoPoint(loc[0][1][0], loc[0][1][1]), loc[1][1]);
 	}
 }

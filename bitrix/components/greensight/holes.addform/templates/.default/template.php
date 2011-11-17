@@ -113,15 +113,6 @@ var hole_id = '<?= $F['ID']['VALUE'] ?>';
 				map.addControl(new YMaps.ScaleLine());
 				map.setCenter(new YMaps.GeoPoint(<?= $map_center ?>), 10);
 				var placemark;
-				<? foreach($arResult['PLACEMARKS'] as &$p): ?>
-					/*var s = new YMaps.Style();
-					s.iconStyle = new YMaps.IconStyle();
-					s.iconStyle.href = "/images/st1234/<?= $p['TYPE'] ?>_<?= $p['STATE'] ?>.png";
-					s.iconStyle.size = new YMaps.Point(54, 61);
-					s.iconStyle.offset = new YMaps.Point(-30, -61);
-					placemark = new YMaps.Placemark(new YMaps.GeoPoint(<?= $p['LON'] ?>, <?= $p['LAT'] ?>), { hideIcon: false, hasBalloon: false, draggable: false, style: s });
-					map.addOverlay(placemark);*/
-				<? endforeach; ?>
 				YMaps.Events.observe(map, map.Events.DblClick, setCoordValue);
 				<? if($arResult['HOLE']['ID']): ?>
 					coordpoint = new YMaps.Placemark(new YMaps.GeoPoint(<?= $arResult['HOLE']['~COORDINATES_R'] ?>), { hideIcon: false, hasBalloon: true, draggable: false, style: 'default#violetPoint' });
@@ -187,11 +178,11 @@ var hole_id = '<?= $F['ID']['VALUE'] ?>';
 		?>
 		
 		<? if($F['COMMENT2']): ?>
-		<!-- камент -->
-		<div class="f">
-			<label for="comment"><?= $F['COMMENT2']['LABEL'] ?></label>
-			<textarea name="COMMENT" id="comment"><?= $F['COMMENT2']['VALUE'] ?></textarea>
-		</div>
+			<!-- камент -->
+			<div class="f">
+				<label for="comment"><?= $F['COMMENT2']['LABEL'] ?></label>
+				<textarea name="COMMENT" id="comment"><?= $F['COMMENT2']['VALUE'] ?></textarea>
+			</div>
 		<? endif; ?>
 	</div>
 	<!-- /правая колоночка -->

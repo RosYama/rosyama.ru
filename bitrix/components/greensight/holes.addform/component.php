@@ -610,7 +610,7 @@ elseif($arParams['GIBDD_REPLY_ID'])
 		'NAME'  => 'comment',
 		'TYPE'  => 'textarea',
 		'LABEL' => GetMessage('FORM_HOLE_COMMENT2'),
-		'VALUE' => htmlspecialcharsEx($_POST['comment'])
+		'VALUE' => htmlspecialcharsEx($_POST['comment'] ? $_POST['comment'] : $arElement['COMMENT_GIBDD_REPLY'])
 	);
 }
 $arResult['FORM']['FIELDS']['SUBMIT'] = array

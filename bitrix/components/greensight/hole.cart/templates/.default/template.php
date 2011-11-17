@@ -92,10 +92,11 @@ $hole = $arResult['HOLE'];
 					case 'gibddre':
 					{
 						?>
-							<div class="cc" style="width:150px">
+							<div class="lc" style="width:150px">
 								<p><?= GetMessage('HOLE_CART_ADMIN_TEXT_7') ?></p>
 								<p><a href="/personal/edit.php?FIX_ID=<?= $hole['ID'] ?>" class="declarationBtn"><?= GetMessage('HOLE_CART_ADMIN_TEXT_8') ?></a></p>
 							</div>
+							<div class="cc"><a href="/personal/edit.php?GIBDD_REPLY_ID=<?= $hole['ID'] ?>">Ещё ответ из ГИБДД</a></div>
 							<div class="rc" style="width:145px;padding: 24px 0 24px 15px;">
 								<p>Если вас не устраивает ответ ГИБДД, то можно</p>
 								<p><a href="#" onclick="var c=document.getElementById('prosecutor_form2');if(c){c.style.display=c.style.display=='block'?'none':'block';}return false;">подать Заявление в Прокуратуру</a></p>
