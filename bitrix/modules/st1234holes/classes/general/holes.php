@@ -505,9 +505,10 @@ class C1234Hole
 						}
 						elseif(substr($f, 0, 2) == 'gr')
 						{
-							$v['pictures']['original']['gibddreply'][] = '/upload/st1234/original/'.$k.'/'.$f;
-							$v['pictures']['medium']['gibddreply'][]   = '/upload/st1234/medium/'.$k.'/'.$f;
-							$v['pictures']['small']['gibddreply'][]    = '/upload/st1234/small/'.$k.'/'.$f;
+							$v['pictures']['original']['gibddreply'][]  = '/upload/st1234/original/'.$k.'/'.$f;
+							$v['pictures']['medium']['gibddreply'][]    = '/upload/st1234/medium/'.$k.'/'.$f;
+							$v['pictures']['small']['gibddreply'][]     = '/upload/st1234/small/'.$k.'/'.$f;
+							$v['pictures']['filectime']['gibddreply'][] = filectime($_SERVER['DOCUMENT_ROOT'].'/upload/st1234/medium/'.$k.'/'.$f);
 						}
 						else
 						{

@@ -519,6 +519,10 @@ class C1234HoleApi
 			<field>comment</field>
 		</method>
 		<method name="to_prosecutor"></method>
+		<method name="set_replied">
+			<field>files</field>
+			<field>comment</field>
+		</method>
 	</state>
 <?
 				}
@@ -1394,7 +1398,7 @@ class C1234HoleApi
 					echo "\t".'<callresult result="0">fail</callresult>'."\n";
 					break;
 				}
-				if($hole['STATE'] != 'inprogress' && $hole['STATE'] != 'gibddre')
+				if($hole['STATE'] != 'inprogress' && $hole['STATE'] != 'gibddre' && $hole['STATE'] != 'achtung')
 				{
 					echo C1234HoleApiXML::Error('UNAPPROPRIATE_METHOD');
 					echo "\t".'<callresult result="0">fail</callresult>'."\n";

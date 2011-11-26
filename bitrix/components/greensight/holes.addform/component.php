@@ -296,6 +296,7 @@ if($_POST)
 						{
 							$_POST['coordinates'] = $arElement['LATITUDE'].','.$arElement['LONGITUDE'];
 						}
+						$_POST['deletefiles'] = implode(',', $_deleteimages);
 						ob_start();
 						C1234HoleApi::Execute($mode, $_POST['ID']);
 						$xml = simplexml_load_string(ob_get_clean());
