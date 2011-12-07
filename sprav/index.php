@@ -8,8 +8,8 @@ $APPLICATION->SetTitle("Регионы");
 </div></div>
 <br clear="all">
 <div class="mainCols"><?$APPLICATION->IncludeComponent("bitrix:news.list", "sprav", array(
-	"IBLOCK_TYPE" => "GIBDD_HEADS",
-	"IBLOCK_ID" => "1",
+	"IBLOCK_TYPE" => "REFERENCE",
+	"IBLOCK_CODE" => "GIBDD_HEADS",
 	"NEWS_COUNT" => "2000",
 	"SORT_BY1" => "NAME+0",
 	"SORT_ORDER1" => "ASC",
