@@ -314,6 +314,17 @@ class CGreensightRFSubject
 		}
 		return false;
 	}
+	
+	//Проверка - есть ли регион по ID
+	public function isID($id)
+	{
+		$ret=false;
+		foreach(CGreensightRFSubject::$_RF_SUBJECTS as $k => $v)
+		{			
+			if ($k==$id) $ret=true;
+		}
+		return $ret;
+	}
 }
 
 ?>

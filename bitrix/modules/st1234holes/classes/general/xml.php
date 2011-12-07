@@ -81,6 +81,20 @@ class C1234HoleApiXML
 		echo "\t</regionslist>\n";
 	}
 	
+	public static function GetRegionGIBDD($id)
+	{
+		CModule::IncludeModule('iblock');
+		
+		$res = CIBlockElement::GetList(array(), array('IBLOCK_CODE' => 'GIBDD_HEADS', 'PROPERTY_SUBJECT_ID' => $id), array('PROPERTY_FIO', 'PROPERTY_POST', 'PROPERTY_POST_DATIVE', 'PROPERTY_ADDRESS', 'PROPERTY_TEL_DEGURN', 'PROPERTY_GIBDD_NAME'));
+		if (!$res) echo C1234HoleApiXML::Error('INTERNAL');
+		$arElement = $res->Fetch();
+		echo "\t".'<gibdd subjectid="'.$id.'">'."\n";
+		echo "\t\t".'<gibdditem address="'.htmlspecialchars($arElement['PROPERTY_ADDRESS_VALUE']).'" tel="'.htmlspecialchars($arElement['PROPERTY_TEL_DEGURN_VALUE']).'">'.htmlspecialchars($arElement['PROPERTY_GIBDD_NAME_VALUE']).'</gibdditem>'."\n";
+		echo "\t\t".'<nominative post="'.htmlspecialchars($arElement['PROPERTY_POST_VALUE']).'" gibdd="'.htmlspecialchars($arElement['PROPERTY_GIBDD_NAME_VALUE']).'">'.htmlspecialchars($arElement['PROPERTY_FIO_VALUE']).'</nominative>'."\n";
+		echo "\t\t".'<dative post="'.htmlspecialchars($arElement['PROPERTY_POST_DATIVE_VALUE']).'">'.htmlspecialchars($arElement['PROPERTY_FIO_DATIVE_VALUE']).'</dative>'."\n";  
+		echo "\t".'</gibdd>'."\n";
+	}	
+	
 	/**
 	 * Сообщить о положительном или отрицательном (что вряд ли бывает, так как
 	 * в этом случае должны торчать сообщения об ошибках) результате

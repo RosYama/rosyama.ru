@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("Карта дефектов");
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/fileman/properties.php'); ?>
 <?$APPLICATION->IncludeComponent("greensight:holes.yandex.view", ".default", array(
-	"KEY" => CIBlockPropertyMapYandex::_GetMapKey("yandex",$_SERVER["SERVER_NAME"]),
+	"KEY" => "",
 	"INIT_MAP_TYPE" => "MAP",
 	"MAP_DATA" => "a:3:{s:10:\"yandex_lat\";s:7:\"55.7383\";s:10:\"yandex_lon\";s:7:\"37.5946\";s:12:\"yandex_scale\";i:10;}",
 	"MAP_WIDTH" => "100%",
