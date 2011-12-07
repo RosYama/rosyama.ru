@@ -20,7 +20,7 @@ $res = CIBlockElement::GetList(array(), array('IBLOCK_CODE' => 'GIBDD_HEADS', 'P
 if ($res) $arElement = $res->Fetch();
 else $arElement['ID']=0;
 $APPLICATION->IncludeComponent("bitrix:news.detail", "sprav", array(
-	"IBLOCK_TYPE" => "GIBDD_HEADS",
+	"IBLOCK_TYPE" => "REFERENCE",
 	"ELEMENT_ID" => $arElement['ID'],
 	"ELEMENT_CODE" => "",
 	"CHECK_DATES" => "Y",
@@ -78,7 +78,7 @@ if ($res) $arElement = $res->Fetch();
 else $arElement['ID']=0;
 if ($arElement['ID']>0) {
 $APPLICATION->IncludeComponent("bitrix:news.detail", "sprav", array(
-	"IBLOCK_TYPE" => "GIBDD_HEADS",
+	"IBLOCK_TYPE" => "REFERENCE",
 	"ELEMENT_ID" => $arElement['ID'],
 	"ELEMENT_CODE" => "",
 	"CHECK_DATES" => "Y",
