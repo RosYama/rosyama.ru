@@ -1,7 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
-$MAP_KEY = 'AC9d100BAAAAeECdYAIA-M8ph4kHsXR6XZcE1eLp4gqT8_gAAAAAAAAAAACtqUkbnD3OYQIJPTmIlNfTEWzg6Q==&wizard=bitrix';
+$MAP_KEY = '';
 $strMapKeys = COPtion::GetOptionString('fileman', 'map_yandex_keys');
 
 $strDomain = $_SERVER['HTTP_HOST'];
