@@ -13,7 +13,7 @@ $hole = $arResult['HOLE'];
 				<span class="state">
 					<?= GetMessage('HOLE_STATE_'.$hole['STATE']) ?>
 					<? if($hole['STATE'] == 'prosecutor' && $hole['DATE_STATUS']): ?>
-						<?= $hole['~DATE_STATUS'].' '/*.GetMessage('REQUEST_TO_PROSECUTOR_SENT')*/ ?>
+						<?= $hole['~DATE_STATUS'] ?>
 					<? elseif($hole['STATE'] != 'fixed' && $hole['~DATE_SENT']): ?>
 						<?= $hole['~DATE_SENT'].' '.GetMessage('HOLE_REQUEST_SENT') ?>
 					<? endif; ?>
@@ -348,9 +348,6 @@ $hole = $arResult['HOLE'];
 <div class="rCol">
 	<div class="b">
 		<div class="before">
-			<? if(sizeof($hole['pictures']['medium']['fixed'])): ?>
-				<?/*<h2><?= GetMessage('HOLE_ITWAS') ?></h2>*/?>
-			<? endif; ?>
 			<? foreach($hole['pictures']['medium']['fresh'] as $src): ?>
 				<img src="<?= $src ?>">
 			<? endforeach; ?>
@@ -364,10 +361,19 @@ $hole = $arResult['HOLE'];
 				<? endif; ?>
 				<h2><?= GetMessage('HOLE_GIBDDREPLY') ?></h2>
 				<? foreach($hole['pictures']['medium']['gibddreply'] as $k => $src): ?>
+					<?
+					$img_id = explode('/', $src);
+					$img_id = preg_replace('/\D/', '', $img_id[sizeof($img_id) - 1]);
+					?>
 					<br />
-					<br />
-					<strong><?= date('Y.m.d', $hole['pictures']['filectime']['gibddreply'][$k]) ?></strong><br />
-					<img src="<?= $src ?>">
+					<p id="gibddreimg_<?= $img_id ?>">
+						<strong><?= date('Y.m.d', $hole['pictures']['filectime']['gibddreply'][$k]) ?></strong>
+						<? if($USER->GetID() == $hole['ID'] || $USER->IsAdmin()): ?>
+							<a class="declarationBtn" onclick="gibddre_img_del('<?= $hole['ID'] ?>', '<?= $img_id ?>')">Удалить это изображение</a>
+						<? endif; ?>
+						<br />
+						<img src="<?= $src ?>">
+					</p>
 				<? endforeach; ?>
 			</div>
 		<? endif; ?>
