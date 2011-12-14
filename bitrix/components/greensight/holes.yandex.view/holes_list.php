@@ -58,27 +58,30 @@ else
 	);
 }
 
-$min_latitude  = false;
-$max_latitude  = false;
-$min_longitude = false;
-$max_longitude = false;
-foreach($res as &$hole)
+$min_latitude  = isset($arFilter['>LATITUDE'])  ? $arFilter['>LATITUDE']  : false;
+$max_latitude  = isset($arFilter['<LATITUDE'])  ? $arFilter['<LATITUDE']  : false;
+$min_longitude = isset($arFilter['>LONGITUDE']) ? $arFilter['>LONGITUDE'] : false;
+$max_longitude = isset($arFilter['<LONGITUDE']) ? $arFilter['<LONGITUDE'] : false;
+if(in_array(false, array($min_latitude, $max_latitude, $min_longitude, $max_longitude), true))
 {
-	if($min_latitude == false || $min_latitude < $hole['LATITUDE'])
+	foreach($res as &$hole)
 	{
-		$min_latitude = $hole['LATITUDE'];
-	}
-	if($max_latitude == false || $max_latitude > $hole['LATITUDE'])
-	{
-		$max_latitude = $hole['LATITUDE'];
-	}
-	if($min_longitude == false || $min_longitude < $hole['LONGITUDE'])
-	{
-		$min_longitude = $hole['LONGITUDE'];
-	}
-	if($max_longitude == false || $max_longitude > $hole['LONGITUDE'])
-	{
-		$max_longitude = $hole['LONGITUDE'];
+		if($min_latitude === false || $min_latitude < $hole['LATITUDE'])
+		{
+			$min_latitude = $hole['LATITUDE'];
+		}
+		if($max_latitude === false || $max_latitude > $hole['LATITUDE'])
+		{
+			$max_latitude = $hole['LATITUDE'];
+		}
+		if($min_longitude === false || $min_longitude < $hole['LONGITUDE'])
+		{
+			$min_longitude = $hole['LONGITUDE'];
+		}
+		if($max_longitude === false || $max_longitude > $hole['LONGITUDE'])
+		{
+			$max_longitude = $hole['LONGITUDE'];
+		}
 	}
 }
 
@@ -170,14 +173,14 @@ foreach($_groupped_res as $column_id => $column)
 		{
 			$latitude  = $min_latitude  + $delta_lat * $row_id;
 			$longitude = $min_longitude + $delta_lon * $column_id;
-			$text      = 'Всего: '.$counter.'<br>'.$text;
+			$text      = 'Всего в окрестности метки: '.$counter.'<br>'.$text;
 			$cell_id = $column_id.'_'.$row_id;
 			
 			// размер пимпы
 			$iconsize = 0;
 			if($counter >= 150)
 			{
-				$iconsize = 90;
+				$iconsize = 80;
 			}
 			else
 			{
@@ -187,7 +190,7 @@ foreach($_groupped_res as $column_id => $column)
 			$fontsize = 0;
 			if($counter >= 150)
 			{
-				$fontsize = 20;
+				$fontsize = 18;
 			}
 			else
 			{
@@ -196,7 +199,7 @@ foreach($_groupped_res as $column_id => $column)
 			
 			// вывод js формирования метки
 			?>
-			s.iconStyle.offset = new YMaps.Point(-39 + Math.round(Math.random() * 40), -39 + Math.round(Math.random() * 40));
+			s.iconStyle.offset = new YMaps.Point(-20 -<?= round($iconsize / 2) ?> + Math.round(Math.random() * 40), -40 -<?= $iconsize ?> + Math.round(Math.random() * 40));
 			PlaceMarks['<?= $cell_id ?>'] = new YMaps.Placemark
 			(
 				new YMaps.GeoPoint(<?= $longitude?>, <?= $latitude ?>),

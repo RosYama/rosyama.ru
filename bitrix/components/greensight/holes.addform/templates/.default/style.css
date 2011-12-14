@@ -57,3 +57,6 @@ span.required { color: red; }
 
 div#overshadow { position: relative; z-index: 2; }
 span.comment { font-size: 75%; color: #666; }
+
+.groupPlacemark div { overflow: hidden; }
+.groupPlacemark span { position: absolute; margin-top: 30%; font-weight: bold; text-align: center; width: 100%; }
