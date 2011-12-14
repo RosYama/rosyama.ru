@@ -58,22 +58,62 @@ else
 	);
 }
 
-/// Создание объектов карты 
+$min_latitude  = false;
+$max_latitude  = false;
+$min_longitude = false;
+$max_longitude = false;
+foreach($res as &$hole)
+{
+	if($min_latitude == false || $min_latitude < $hole['LATITUDE'])
+	{
+		$min_latitude = $hole['LATITUDE'];
+	}
+	if($max_latitude == false || $max_latitude > $hole['LATITUDE'])
+	{
+		$max_latitude = $hole['LATITUDE'];
+	}
+	if($min_longitude == false || $min_longitude < $hole['LONGITUDE'])
+	{
+		$min_longitude = $hole['LONGITUDE'];
+	}
+	if($max_longitude == false || $max_longitude > $hole['LONGITUDE'])
+	{
+		$max_longitude = $hole['LONGITUDE'];
+	}
+}
+
+// группировка объектов карты по квадратикам
+$delta_lat     = ($max_latitude  - $min_latitude)  / 6;
+$delta_lon     = ($max_longitude - $min_longitude) / 12;
+$_groupped_res = array();
+foreach($res as &$hole)
+{
+	$lon = floor(($hole['LONGITUDE'] - $min_longitude) / $delta_lon);
+	$lat = floor(($hole['LATITUDE']  - $min_latitude)  / $delta_lat);
+	$_groupped_res[$lon][$lat][$hole['STATE']]++;
+}
+
+/// Создание объектов карты
+// одиночные точки
 foreach($res as &$hole)
 {
 	if($_REQUEST['skip_id'] != $hole['ID'])
 	{
-		?>
-		if(!PlaceMarks[<?= $hole['ID'] ?>])
+		$lon = floor(($hole['LONGITUDE'] - $min_longitude) / $delta_lon);
+		$lat = floor(($hole['LATITUDE']  - $min_latitude)  / $delta_lat);
+		if(array_sum($_groupped_res[$lon][$lat]) > 5)
 		{
-			var s = new YMaps.Style();
-			s.iconStyle = new YMaps.IconStyle();
-			s.iconStyle.href = "/images/st1234/<?= $hole['TYPE'] ?>_<?= $hole['STATE'] ?>.png";
-			s.iconStyle.size = new YMaps.Point(54, 61);
-			s.iconStyle.offset = new YMaps.Point(-30, -61);
-			PlaceMarks[<?= $hole['ID'] ?>] = new YMaps.Placemark(new YMaps.GeoPoint(<?= $hole['LONGITUDE'] ?>, <?= $hole['LATITUDE'] ?>), { hasHint: false, hideIcon: false, hasBalloon: false, style: s });
-			map.addOverlay(PlaceMarks[<?= $hole['ID'] ?>]);
-			<? if(!$_REQUEST['noevents']): ?>
+			continue;
+		}
+		?>
+		var s = new YMaps.Style();
+		s.iconStyle = new YMaps.IconStyle();
+		s.iconStyle.href = "/images/st1234/<?= $hole['TYPE'] ?>_<?= $hole['STATE'] ?>.png";
+		s.iconStyle.size = new YMaps.Point(28, 30);
+		s.iconStyle.offset = new YMaps.Point(-14, -30);
+		PlaceMarks[<?= $hole['ID'] ?>] = new YMaps.Placemark(new YMaps.GeoPoint(<?= $hole['LONGITUDE'] ?>, <?= $hole['LATITUDE'] ?>), { hasHint: false, hideIcon: false, hasBalloon: false, style: s });
+		map.addOverlay(PlaceMarks[<?= $hole['ID'] ?>]);
+		<? if(!$_REQUEST['noevents']): ?>
 			YMaps.Events.observe
 			(
 				PlaceMarks[<?= $hole['ID'] ?>],
@@ -83,9 +123,110 @@ foreach($res as &$hole)
 					window.location="/<?= $hole['ID'] ?>/";
 				}
 			)
-			<? endif; ?>
-		}
+		<? endif; ?>
 		<?
+	}
+}
+
+// группы точек
+?>
+var st = new YMaps.Template(
+	"<div class=\"groupPlacemark\" style=\"$[metaDataProperty.groupstyle]\">\
+		<span style=\"$[metaDataProperty.spanstyle]\">$[name|0]<\/span>\
+		<div class=\"achtung\" style=\"$[metaDataProperty.achtungstyle]\"><div style=\"$[metaDataProperty.achtungstyle2]\"><img src=\"\/images\/st1234\/achtung.png\" style=\"$[metaDataProperty.groupstyle]\"><\/div><\/div>\
+		<div class=\"prosecutor\" style=\"$[metaDataProperty.prosecutorstyle]\"><div style=\"$[metaDataProperty.prosecutorstyle2]\"><img src=\"\/images\/st1234\/prosecutor.png\" style=\"$[metaDataProperty.groupstyle]\"><\/div><\/div>\
+		<div class=\"inprogress\" style=\"$[metaDataProperty.inprogressstyle]\"><div style=\"$[metaDataProperty.inprogressstyle2]\"><img src=\"\/images\/st1234\/inprogress.png\" style=\"$[metaDataProperty.groupstyle]\"><\/div><\/div>\
+		<div class=\"gibddre\" style=\"$[metaDataProperty.gibddrestyle]\"><div style=\"$[metaDataProperty.gibddrestyle2]\"><img src=\"\/images\/st1234\/gibddre.png\" style=\"$[metaDataProperty.groupstyle]\"><\/div><\/div>\
+		<div class=\"fresh\" style=\"$[metaDataProperty.freshstyle]\"><div style=\"$[metaDataProperty.freshstyle2]\"><img src=\"\/images\/st1234\/fresh.png\" style=\"$[metaDataProperty.groupstyle]\"><\/div><\/div>\
+		<div class=\"fixed\" style=\"$[metaDataProperty.fixedstyle]\"><div style=\"$[metaDataProperty.fixedstyle2]\"><img src=\"\/images\/st1234\/fixed.png\" style=\"$[metaDataProperty.groupstyle]\"><\/div><\/div>\
+	<\/div>"
+);
+var s = new YMaps.Style();
+s.iconStyle = new YMaps.IconStyle(st);
+s.iconStyle.href = "/images/st1234/achtung_circle.png";
+<?
+foreach($_groupped_res as $column_id => $column)
+{
+	foreach($column as $row_id => &$row)
+	{
+		$_state_count = array
+		(
+			'achtung'    => 0,
+			'prosecutor' => 0,
+			'inprogress' => 0,
+			'gibddre'    => 0,
+			'fresh'      => 0,
+			'fixed'      => 0
+		);
+		$text    = '';
+		$counter = 0;
+		foreach($row as $state_name => &$cell)
+		{
+			$text    .= GetMessage('HOLE_STATE_'.$state_name).': '.$cell.'<br>';
+			$counter += $cell;
+			$_state_count[$state_name] = $cell;
+		}
+		if($counter > 5)
+		{
+			$latitude  = $min_latitude  + $delta_lat * $row_id;
+			$longitude = $min_longitude + $delta_lon * $column_id;
+			$text      = 'Всего: '.$counter.'<br>'.$text;
+			$cell_id = $column_id.'_'.$row_id;
+			
+			// размер пимпы
+			$iconsize = 0;
+			if($counter >= 150)
+			{
+				$iconsize = 90;
+			}
+			else
+			{
+				$iconsize = 40 + $counter / 3;
+			}
+			// размер шрифта в метке
+			$fontsize = 0;
+			if($counter >= 150)
+			{
+				$fontsize = 20;
+			}
+			else
+			{
+				$fontsize = ceil(10 + $counter / 14);
+			}
+			
+			// вывод js формирования метки
+			?>
+			s.iconStyle.offset = new YMaps.Point(-39 + Math.round(Math.random() * 40), -39 + Math.round(Math.random() * 40));
+			PlaceMarks['<?= $cell_id ?>'] = new YMaps.Placemark
+			(
+				new YMaps.GeoPoint(<?= $longitude?>, <?= $latitude ?>),
+				{
+					hasHint: false,
+					hideIcon: true,
+					hasBalloon: true,
+					style: s,
+					balloonOptions: {
+						hasCloseButton: true,
+						mapAutoPan: 0
+					}
+				}
+			);
+			PlaceMarks['<?= $cell_id ?>'].name        = '<?= $counter ?>';
+			PlaceMarks['<?= $cell_id ?>'].description = '<?= $text ?>';
+			<?
+			$h  = 0; // общая высота метки
+			$dh = 0; // прирост высоты метки
+			echo "PlaceMarks['".$cell_id."'].metaDataProperty.groupstyle = 'width: ".$iconsize."px'; ";
+			foreach($_state_count as $state => $state_count)
+			{
+				$dh = $state_count / $counter * $iconsize + 2;
+				echo "PlaceMarks['".$cell_id."'].metaDataProperty.".$state."style = 'height: ".(int)$dh."px;'; ";
+				echo "PlaceMarks['".$cell_id."'].metaDataProperty.".$state."style2 = 'margin-top: -".(int)$h."px;'; ";
+				echo "PlaceMarks['".$cell_id."'].metaDataProperty.spanstyle = 'font-size: ".$fontsize."px'; ";
+				$h += $dh;
+			}
+			echo "map.addOverlay(PlaceMarks['".$cell_id."']); ";
+		}
 	}
 }
 

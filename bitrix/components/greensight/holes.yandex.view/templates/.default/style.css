@@ -22,3 +22,6 @@
 	position: relative;
 	z-index: 2;
 }
+
+.groupPlacemark div { overflow: hidden; }
+.groupPlacemark span { position: absolute; margin-top: 30%; font-weight: bold; text-align: center; width: 100%; }
