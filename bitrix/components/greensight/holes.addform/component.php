@@ -53,6 +53,12 @@ elseif($arParams['GIBDD_REPLY_ID'])
 	$hole_id = (int)$arParams['GIBDD_REPLY_ID'];
 	$mode    = 'update-setreplied';
 }
+elseif($arParams['DELETE_GIBDDRE_IMG'])
+{
+	// этой яме удалим скан ответа из ГИБДД
+	$hole_id = (int)$arParams['DELETE_GIBDDRE_IMG'];
+	$mode    = 'update-setreplied';
+}
 elseif($arParams['PROSECUTOR_ID'])
 {
 	// этой яме надо поставить статус "жалоба на ГИБДД в прокуратуре"
@@ -366,6 +372,7 @@ if
 	|| $arParams['REFIX_ID']
 	|| $arParams['PROSECUTOR_ID']
 	|| $arParams['REPROSECUTOR_ID']
+	|| $arParams['DELETE_GIBDDRE_IMG']
 )
 {
 	ob_start();
@@ -373,15 +380,37 @@ if
 	$xml = simplexml_load_string(ob_get_clean());
 	if($xml->callresult == 'ok')
 	{
-		LocalRedirect('/'.$hole_id.'/');
-		die();
+		if($_GET['ajax'])
+		{
+			while(ob_get_level())
+			{
+				ob_end_clean();
+			}
+			echo 'ok';
+			die();
+		}
+		else
+		{
+			LocalRedirect('/'.$hole_id.'/');
+			die();
+		}
 	}
 	else
 	{
 		foreach($xml->error as $error)
 		{
-			$arResult['ERROR_STR'] .= $error.'<br/>';
+			$arResult['ERROR_STR'] .= $error."\n";
 		}
+		if($_GET['ajax'])
+		{
+			while(ob_get_level())
+			{
+				ob_end_clean();
+			}
+			echo $arResult['ERROR_STR'];
+			die();
+		}
+		$arResult['ERROR_STR'] = nl2br($arResult['ERROR_STR']);
 	}
 }
 elseif($arParams['DELETE_ID'])
@@ -412,7 +441,10 @@ elseif($arParams['DELETE_ALL'])
 	}
 	if($_GET['ajax'])
 	{
-		ob_end_clean();
+		while(ob_get_level())
+		{
+			ob_end_clean();
+		}
 		echo 'ok';
 		die();
 	}
@@ -432,11 +464,10 @@ elseif($arParams['PREMODERATE_ID'])
 	{
 		if($_GET['ajax'])
 		{
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
+			while(ob_get_level())
+			{
+				ob_end_clean();
+			}
 			echo $error;
 			die();
 		}
@@ -449,11 +480,10 @@ elseif($arParams['PREMODERATE_ID'])
 	{
 		if($_GET['ajax'])
 		{
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
+			while(ob_get_level())
+			{
+				ob_end_clean();
+			}
 			echo 'ok';
 			die();
 		}
@@ -487,11 +517,10 @@ elseif($arParams['PREMODERATE_ALL'])
 	{
 		if($_GET['ajax'])
 		{
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
-			ob_end_clean();
+			while(ob_get_level())
+			{
+				ob_end_clean();
+			}
 			echo 'ok';
 			die();
 		}

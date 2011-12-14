@@ -219,3 +219,5 @@ div.rCol .before:after, div.rCol .after:after {
 	resize:none;
 	margin-bottom:10px;
 }
+
+a.declarationBtn { cursor: pointer; }

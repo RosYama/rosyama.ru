@@ -44,3 +44,27 @@ function selectAll(obj) {
   obj.focus()
   obj.select()
 }
+
+function gibddre_img_del(hole_id, img_id)
+{
+	jQuery.get
+	(
+		'/personal/edit.php',
+		{
+			DELETE_GIBDDRE_IMG: hole_id,
+			deletefiles: 'gr' + img_id + '.jpg',
+			ajax: 1
+		},
+		function(data)
+		{
+			if(data == 'ok')
+			{
+				$('#gibddreimg_' + img_id).fadeOut();
+			}
+			else
+			{
+				alert(data);
+			}
+		}
+	);
+}
