@@ -368,7 +368,7 @@ $hole = $arResult['HOLE'];
 					<br />
 					<p id="gibddreimg_<?= $img_id ?>">
 						<strong><?= date('Y.m.d', $hole['pictures']['filectime']['gibddreply'][$k]) ?></strong>
-						<? if($USER->GetID() == $hole['ID'] || $USER->IsAdmin()): ?>
+						<? if($USER->GetID() == $hole['USER_ID'] || $USER->IsAdmin()): ?>
 							<a class="declarationBtn" onclick="gibddre_img_del('<?= $hole['ID'] ?>', '<?= $img_id ?>')">Удалить это изображение</a>
 						<? endif; ?>
 						<br />
