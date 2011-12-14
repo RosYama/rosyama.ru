@@ -199,7 +199,7 @@ foreach($_groupped_res as $column_id => $column)
 			
 			// вывод js формирования метки
 			?>
-			s.iconStyle.offset = new YMaps.Point(-20 -<?= round($iconsize / 2) ?> + Math.round(Math.random() * 40), -40 -<?= $iconsize ?> + Math.round(Math.random() * 40));
+			s.iconStyle.offset = new YMaps.Point(-15 -<?= round($iconsize / 2) ?> + Math.round(Math.random() * 30), -35 -<?= $iconsize ?> + Math.round(Math.random() * 30));
 			PlaceMarks['<?= $cell_id ?>'] = new YMaps.Placemark
 			(
 				new YMaps.GeoPoint(<?= $longitude?>, <?= $latitude ?>),
