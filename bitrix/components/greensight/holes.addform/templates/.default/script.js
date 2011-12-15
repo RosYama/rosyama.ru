@@ -243,6 +243,7 @@ function GetPlacemarks(map)
 			function(data)
 			{
 				bAjaxInProgress = false;
+				map.removeAllOverlays();
 				eval(data);
 			}
 		);
