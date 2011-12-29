@@ -35,6 +35,7 @@ $MESS['GREENSIGHT_ST1234_TYPE_policeman']       = 'Лежачий полицей
 $MESS['GREENSIGHT_ST1234_TYPE_fence']           = 'Ограждение';
 $MESS['GREENSIGHT_ST1234_TYPE_holeinyard']      = 'Яма во дворе';
 $MESS['GREENSIGHT_ST1234_TYPE_light']           = 'Светофор';
+$MESS['GREENSIGHT_ST1234_TYPE_snow']            = 'Снег';
 $MESS['GREENSIGHT_ST1234_REFRESH_ACHTUNG_LIST'] = 'Запустить скрипт обновления списка';
 $MESS['GREENSIGHT_ST1234_EMAIL_ACHTUNG_LIST']   = 'Почтовый ящик, на который выслать список ям';
 ?>

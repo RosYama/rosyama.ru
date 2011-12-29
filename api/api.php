@@ -4,11 +4,10 @@ ob_start();
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 CModule::IncludeModule('st1234hole');
 global $USER;
-ob_end_clean();
-ob_end_clean();
-ob_end_clean();
-ob_end_clean();
-ob_end_clean();
+while(ob_get_level())
+{
+	ob_end_clean();
+}
 
 // уберём хедеры
 if(!headers_sent())
@@ -95,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_POST)
 						// узнать ФИО начальника УГИБДД
 						$mode = 'getgibddhead';
 						break;
-					}				
+					}
 					case 'getupdatemethods':
 					{
 						// возможные методы обновления ямы

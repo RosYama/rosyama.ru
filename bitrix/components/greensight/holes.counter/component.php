@@ -8,15 +8,7 @@ if(!CModule::IncludeModule('st1234holes'))
 $arResult['facts'] = 0;
 $arResult['fixed'] = 0;
 $arResult['gibddre'] = 0;
-/*$res = C1234Hole::GetList();
-foreach($res as &$ar)
-{
-	$arResult['facts']++;
-	if($ar['STATE'] == 'fixed')
-	{
-		$arResult['fixed']++;
-	}
-}*/
+
 $arResult = C1234Hole::GetCounts();
 
 $s = (string)$arResult['facts'];

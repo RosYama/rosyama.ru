@@ -10,6 +10,7 @@ $MESS['HOLE_TYPE_policeman']  = 'Лежачий полицейский';
 $MESS['HOLE_TYPE_fence']      = 'Ограждение';
 $MESS['HOLE_TYPE_holeinyard'] = 'Яма во дворе';
 $MESS['HOLE_TYPE_light']      = 'Светофор';
+$MESS['HOLE_TYPE_snow']       = 'Снег';
 $MESS['HOLE_REQUEST_SENT']    = 'отправлен запрос в ГИБДД';
 $MESS['HOLE_ITWAS']           = 'Было';
 $MESS['HOLE_ITBECAME']        = 'Стало';

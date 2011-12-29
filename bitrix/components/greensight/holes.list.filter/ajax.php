@@ -5,11 +5,7 @@ if(!CModule::IncludeModule('greensight_utils') || !CModule::IncludeModule('st123
 {
 	die();
 }
-ob_end_clean();
-ob_end_clean();
-ob_end_clean();
-ob_end_clean();
-ob_end_clean();
+while(ob_get_level()) ob_end_clean();
 
 $arResult = array();
 switch(ToLower($_REQUEST['ajax']))
@@ -34,7 +30,6 @@ switch(ToLower($_REQUEST['ajax']))
 			return;
 		}
 		global $DB;
-		//$_REQUEST['city'] = preg_replace('/[^\w\d\-\_\sа-яА-ЯёЁ]/', '', $_REQUEST['city']);
 		$_REQUEST['city'] = str_replace('%', '', $_REQUEST['city']);
 		$arFilter = array('ADR_CITY' => $_REQUEST['city']);
 		$_REQUEST['rfsubjid'] = (int)$_REQUEST['rfsubjid'];

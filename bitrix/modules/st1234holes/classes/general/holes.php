@@ -462,12 +462,8 @@ class C1234Hole
 		
 		// собственно запрос к бд и обработка результата
 		global $DB;
-		//print_r($filter);
-		//echo $sql_str;
 		$res = CGreensightDBQueryCache::QueryCached($sql_str);
-		//$res = $DB->Query($sql_str);
 		$_result = array();
-		//while($ar = $res->Fetch())
 		foreach($res as &$ar)
 		{
 			$ar['~DATE_CREATED'] = date($DB->DateFormatToPHP(CSite::GetDateFormat('SHORT')), $ar['DATE_CREATED']);

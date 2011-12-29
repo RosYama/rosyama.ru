@@ -288,6 +288,7 @@ $oFilter->Begin();
 			<option value="fence"<?=      $filter_state == 'fence'      ? ' selected' : '' ?>><?= GetMessage('GREENSIGHT_ST1234_TYPE_fence') ?></option>
 			<option value="holeinyard"<?= $filter_state == 'holeinyard' ? ' selected' : '' ?>><?= GetMessage('GREENSIGHT_ST1234_TYPE_holeinyard') ?></option>
 			<option value="light"<?=      $filter_state == 'light'      ? ' selected' : '' ?>><?= GetMessage('GREENSIGHT_ST1234_TYPE_light') ?></option>
+			<option value="snow"<?=       $filter_state == 'snow'       ? ' selected' : '' ?>><?= GetMessage('GREENSIGHT_ST1234_TYPE_snow') ?></option>
 		</select>
 	</td>
 </tr>
