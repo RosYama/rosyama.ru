@@ -712,4 +712,12 @@ p.date {
 	margin:0 auto;
 }
 
-
+#headsquare
+{
+	position: absolute;
+	top: 40px;
+	right: 2px;
+	width: 150px;
+	z-index: 10;
+	text-align: left;
+}

@@ -22,6 +22,13 @@
 </head>
 <body>
 <?$APPLICATION->ShowPanel();?>
+<div id="headsquare">
+	<?$APPLICATION->IncludeFile(
+		$APPLICATION->GetTemplatePath("include_areas/highannounce.php"),
+		Array(),
+		Array("MODE"=>"html")
+	);?>
+</div>
 <div class="wrap">
 	<div class="navigation">
 		<div class="container">
