@@ -3,7 +3,7 @@
 class C1234HoleApi
 {
 	// типы дефектов
-	public static $_allowed_types    = array('badroad', 'holeonroad', 'hatch', 'rails', 'holeinyard');
+	public static $_allowed_types    = array('badroad', 'holeonroad', 'hatch', 'rails', 'holeinyard', 'snow');
 	public static $_deprecated_types = array('crossing', 'nomarking', 'policeman', 'fence', 'light');
 	
 	/**

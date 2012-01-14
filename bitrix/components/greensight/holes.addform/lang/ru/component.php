@@ -20,6 +20,7 @@ $MESS['FORM_HOLE_TYPE_policeman']  = 'Лежачий полицейский';
 $MESS['FORM_HOLE_TYPE_fence']      = 'Ограждение';
 $MESS['FORM_HOLE_TYPE_holeinyard'] = 'Яма во дворе';
 $MESS['FORM_HOLE_TYPE_light']      = 'Светофор';
+$MESS['FORM_HOLE_TYPE_snow']       = 'Снег';
 $MESS['HOLE_SET_FIXED']            = 'Отметить дефект как отремонтированный';
 
 $MESS['HOLE_FORM_COORDINATES']          = 'Поставьте метку на&nbsp;карте двойным щелчком мыши';

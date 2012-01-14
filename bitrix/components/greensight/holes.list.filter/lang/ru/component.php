@@ -16,6 +16,7 @@ $MESS['FORM_HOLE_TYPE_policeman']   = 'Лежачий полицейский';
 $MESS['FORM_HOLE_TYPE_fence']       = 'Ограждение';
 $MESS['FORM_HOLE_TYPE_holeinyard']  = 'Яма во дворе';
 $MESS['FORM_HOLE_TYPE_light']       = 'Светофор';
+$MESS['FORM_HOLE_TYPE_snow']        = 'Снег';
 $MESS['FORM_HOLE_STATE_fresh']      = 'Добавлен на сайт';
 $MESS['FORM_HOLE_STATE_inprogress'] = 'Заявление отправлено в ГИБДД';
 $MESS['FORM_HOLE_STATE_fixed']      = 'Исправлен';

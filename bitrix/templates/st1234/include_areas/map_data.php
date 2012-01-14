@@ -27,16 +27,13 @@ function GetCheckNull()
 </div>
 <div class="filterCol filterType">
 <p class="title">Показать тип дефектов</p>
-<label class="col1"><span><input id="ch0" name="TYPE[0]" type="checkbox" value="badroad" <?if($_REQUEST["TYPE"][0]):?>checked="checked"<?endif?>  /></span><ins class="badroad">Разбитая дорога</ins></label>
-<label class="col2"><span><input id="ch1" name="TYPE[10]" type="checkbox"  value="hatch" <?if($_REQUEST["TYPE"][10]):?>checked="checked"<?endif?>  /></span><ins class="hatch">Люк</ins></label>
-<!--<label class="col3"><span><input id="ch2" name="TYPE[1]" type="checkbox"  value="nomarking" <?if($_REQUEST["TYPE"][1]):?>checked="checked"<?endif?>/></span><ins class="nomarking">Нет разметки</ins></label>-->
-<!--<label class="col4"><span><input id="ch3" name="TYPE[2]" type="checkbox"  value="light" <?if($_REQUEST["TYPE"][2]):?>checked="checked"<?endif?> /></span><ins class="light">Светофор</ins></label> -->
-<label class="col1"><span><input id="ch2" name="TYPE[3]" type="checkbox"  value="holeonroad" <?if($_REQUEST["TYPE"][3]):?>checked="checked"<?endif?> /></span><ins class="holeonroad">Яма на дороге</ins></label>
-<!--<label class="col2"><span><input id="ch5" name="TYPE[4]" type="checkbox"  value="crossing" <?if($_REQUEST["TYPE"][4]):?>checked="checked"<?endif?> /></span><ins class="crossing">Ж.&nbsp;д. переезд</ins></label> -->
-<label class="col3"><span><input id="ch3" name="TYPE[5]" type="checkbox"  value="rails" <?if($_REQUEST["TYPE"][5]):?>checked="checked"<?endif?> /></span><ins class="rails">Рельсы</ins></label>
-<label class="col4"><span><input id="ch4" name="TYPE[6]" type="checkbox"  value="policeman" <?if($_REQUEST["TYPE"][6]):?>checked="checked"<?endif?> /></span><ins class="policeman">Полицейский</ins></label>
+<label class="col1"><span><input id="ch0" name="TYPE[0]" type="checkbox"  value="badroad" <?if($_REQUEST["TYPE"][0]):?>checked="checked"<?endif?>  /></span><ins class="badroad">Разбитая дорога</ins></label>
+<label class="col2"><span><input id="ch1" name="TYPE[10]" type="checkbox" value="hatch" <?if($_REQUEST["TYPE"][10]):?>checked="checked"<?endif?>  /></span><ins class="hatch">Люк</ins></label>
+<label class="col3"><span><input id="ch2" name="TYPE[3]" type="checkbox"  value="holeonroad" <?if($_REQUEST["TYPE"][3]):?>checked="checked"<?endif?> /></span><ins class="holeonroad">Яма на дороге</ins></label>
+<label class="col4"><span><input id="ch3" name="TYPE[5]" type="checkbox"  value="rails" <?if($_REQUEST["TYPE"][5]):?>checked="checked"<?endif?> /></span><ins class="rails">Рельсы</ins></label>
 <label class="col1"><span><input id="ch5" name="TYPE[7]" type="checkbox"  value="holeinyard" <?if($_REQUEST["TYPE"][7]):?>checked="checked"<?endif?> /></span><ins class="holeinyard">Яма во дворе</ins></label>
-<!--<label class="col2"><span><input id="ch9" name="TYPE[8]" type="checkbox"  value="fence" <?if($_REQUEST["TYPE"][8]):?>checked="checked"<?endif?> /></span><ins class="fence">Ограждение</ins></label>-->
+<label class="col2"><span><input id="ch6" name="TYPE[11]" type="checkbox" value="snow" <?if($_REQUEST["TYPE"][11]):?>checked="checked"<?endif?> /></span><ins class="snow">Снег</ins></label>
+<label class="col4"><span><input id="ch4" name="TYPE[6]" type="checkbox"  value="policeman" <?if($_REQUEST["TYPE"][6]):?>checked="checked"<?endif?> /></span><ins class="policeman">Полицейский</ins></label>
 <input id="MAPLAT" name="MAPLAT" type="hidden" value="<?= htmlspecialcharsEx($_REQUEST["MAPLAT"]) ?>" />
 <input id="MAPZOOM" name="MAPZOOM" type="hidden" value="<?= htmlspecialcharsEx($_REQUEST["MAPZOOM"]) ?>" />
 

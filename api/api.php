@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_POST)
 						// узнать ФИО начальника УГИБДД
 						$mode = 'getgibddhead';
 						break;
-					}				
+					}
 					case 'getupdatemethods':
 					{
 						// возможные методы обновления ямы
