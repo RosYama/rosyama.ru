@@ -8,6 +8,7 @@ $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
 	<div class="lCol">
 		<?
 		$APPLICATION->IncludeComponent('greensight:holes.list.filter');
+		$APPLICATION->IncludeFile($APPLICATION->GetTemplatePath("include_areas/highannounce.php"), Array(), Array("MODE"=>"html"));
 		if(CModule::IncludeModule('iblock'))
 		{
 			$news_iblock_id = CIBlock::GetList(array(), array('CODE' => 'news'));
